@@ -2,18 +2,21 @@
 
 AngularJS to Angular2 transition : step 2 - SystemJS.
 
-This project was initially duplicated from the [Swimlane's angular1-systemjs-seed project](https://github.com/Swimlane/angular1-systemjs-seed).
-
 ## Work In Progress
 
 This is a work in progress.
 
 Planned steps are :
-- npm dependencies upgrade
-- jspm dependencies upgrade
-- migration from angular-ui-router to angular-component-router
-- apply Sedona angularjs guidelines and (upgraded) eslint-config
+- npm dependencies upgrade (done)
+- jspm dependencies upgrade (done)
 - externalise build tasks
+- drop systemjs-route-bundler and replace it by a KISS gulp-jspm-build task
+- migration from angular-ui-router to angular-component-router
+- migration from jslint to eslint
+- apply Sedona angularjs guidelines and (upgraded) eslint-config
+
+----------
+This project was initially duplicated from the [Swimlane's angular1-systemjs-seed project](https://github.com/Swimlane/angular1-systemjs-seed).
 
 ----------
 
@@ -28,10 +31,6 @@ This project does:
 - Easy watch/browser-sync/lint/test/build setup via Gulp
 - LESS CSS Support with source maps and minification
 - AngularJS Template Compilation
-- AngularJS Annotatation
-- Bundle builds via SystemJS Builder
-- Cache Busting with SystemJS
-- Demonstrates on-demand theme loading
 
 ### Install & Run
 
