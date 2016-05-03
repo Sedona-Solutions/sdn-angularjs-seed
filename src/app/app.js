@@ -6,7 +6,7 @@ import 'ocLazyLoad';
 import 'common/core';
 import routing from 'common/utils/routing';
 
-let app = angular.module('demo', ['ui.router', 'oc.lazyLoad']);
+let app = angular.module('sdnSeed', ['ui.router', 'oc.lazyLoad']);
 
 app.config(routing(app));
 
