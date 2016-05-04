@@ -1,24 +1,20 @@
 import angular from 'angular';
-import BuilderModule from 'app/admin/builder/builder'
-import UsersModule from 'app/admin/users/users'
-
-import { AdminController } from './AdminController';
-import adminTemplate from './admin.tpl';
+import BuilderModule from 'app/admin/builder/builder';
+import UsersModule from 'app/admin/users/users';
+import { adminComponent, adminState } from 'app/admin/admin_component';
+import adminTemplate from './admin_component.tpl';
 
 /* @ngInject */
-function ConfigureModule($stateProvider){
-  $stateProvider.state('admin', {
-    url: '/admin',
-    templateUrl: adminTemplate.name,
-    controller: AdminController,
-    controllerAs: 'adminCtrl'
-  });
-}
+let routeConfig = ($stateProvider) => {
+    $stateProvider.state('admin', adminState);
+};
 
-export default angular
-  .module('admin', [
+let adminModule = angular.module('admin', [
     BuilderModule.name,
     UsersModule.name,
     adminTemplate.name
-  ])
-  .config(ConfigureModule);
+])
+.component('admin', adminComponent)
+.config(routeConfig);
+
+export default adminModule;
