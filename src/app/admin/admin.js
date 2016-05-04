@@ -1,8 +1,8 @@
 import angular from 'angular';
 import BuilderModule from 'app/admin/builder/builder';
 import UsersModule from 'app/admin/users/users';
-import { adminComponent, adminState } from 'app/admin/admin_component';
-import adminTemplate from './admin_component.tpl';
+import { adminComponent, adminState } from 'app/admin/admin.component';
+import adminTemplate from './admin.component.tpl';
 
 /* @ngInject */
 let routeConfig = ($stateProvider) => {

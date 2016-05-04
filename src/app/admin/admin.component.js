@@ -1,4 +1,4 @@
-import adminTemplate from './admin_component.tpl';
+import adminTemplate from './admin.component.tpl';
 
 export let adminState = {
     url: '/admin',
