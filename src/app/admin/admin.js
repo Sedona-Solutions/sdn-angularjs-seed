@@ -1,13 +1,15 @@
 import angular from 'angular';
 import BuilderModule from 'app/admin/builder/builder';
 import UsersModule from 'app/admin/users/users';
-import adminComponent from 'app/admin/admin.component';
+import * as AdminComponent from 'app/admin/admin.component';
+import routes from 'common/utils/routes';
 
-let adminModule = angular.module('admin', [
+export default angular.module('admin', [
     BuilderModule.name,
-    UsersModule.name
-]);
-
-adminComponent(adminModule);
-
-export default adminModule;
+    UsersModule.name,
+    AdminComponent.template.name
+])
+.config(routes([
+    {path: '/admin', component: AdminComponent}
+]))
+.component(AdminComponent.selector, AdminComponent.component);

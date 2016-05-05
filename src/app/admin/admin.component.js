@@ -1,23 +1,11 @@
 import template from './admin.component.tpl';
-import state from 'common/utils/state';
-import component from 'common/utils/component';
+export { default as template} from './admin.component.tpl';
 
 export let selector = 'admin';
-
-export default (module) => {
-
-    component({
-        module,
-        selector,
-        template
-    });
-
-    state({
-        module,
-        name: selector
-    });
-}
-class Admin {
+export let component = {
+    templateUrl : template.name
+};
+export class Admin {
 
     /*@ngInject*/
     constructor() {
