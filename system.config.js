@@ -65,7 +65,7 @@ System.config({
     "clean-css": "npm:clean-css@3.4.12",
     "core-js": "npm:core-js@1.2.6",
     "css": "github:systemjs/plugin-css@0.1.21",
-    "decorators": "github:noelmace/angularjs-decorators@0.0.4",
+    "decorators": "github:noelmace/angularjs-decorators@0.0.7",
     "json": "github:systemjs/plugin-json@0.1.2",
     "ocLazyLoad": "github:ocombe/oclazyload@1.0.9",
     "systemjs/plugin-css": "github:systemjs/plugin-css@0.1.21",

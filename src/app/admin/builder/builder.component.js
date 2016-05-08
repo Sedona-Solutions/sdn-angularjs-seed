@@ -3,6 +3,10 @@ import angular from 'angular';
 import modalModule from 'common/components/modal';
 import selectModule from 'common/components/select';
 import template from './builder.component.tpl';
+import { Module } from 'decorators/Module';
+import { Component } from 'decorators/Component';
+import { routes } from 'common/utils/routes';
+
 
 @Module({
     name: 'admin.build',

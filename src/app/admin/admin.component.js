@@ -1,15 +1,15 @@
 import template from './admin.component.tpl';
 import { Component } from 'decorators/Component';
 import { Module } from 'decorators/Module';
-import BuilderModule from 'app/admin/builder/builder';
+import { BuilderComponent } from 'app/admin/builder/builder.component';
 import { UsersComponent } from 'app/admin/users/users.component';
 import { routes } from 'common/utils/routes';
 
 @Module({
     name: 'admin',
     dependencies: [
-        BuilderModule.name,
-        UsersComponent.$module.name,
+        BuilderComponent.$ngmodule.name,
+        UsersComponent.$ngmodule.name,
         template.name
     ]
 })

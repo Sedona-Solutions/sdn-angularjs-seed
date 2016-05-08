@@ -3,10 +3,13 @@ import angular from 'angular';
 export let routes = (configs) => {
     let params = configs.map((config) => {
         let paramObj = {
-            name: config.name || config.component.$selector,
+            name: config.name || config.component.$kissDecoratorsConfig.name,
             config: {
                 url: config.path,
-                template: config.template || `<${config.component.$selector}></${config.component.$selector}>`
+                template: config.template || `
+                    <${config.component.$kissDecoratorsConfig.selector}>
+                    </${config.component.$kissDecoratorsConfig.selector}>
+                `
             }
         };
 
@@ -35,7 +38,7 @@ export let routes = (configs) => {
     function RouteConfig($stateProvider) {
         params.forEach((definition) => {
             $stateProvider.state(definition.name, definition.config);
-        })
+        });
     }
 
     return RouteConfig;
