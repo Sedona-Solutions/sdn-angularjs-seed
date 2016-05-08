@@ -9,7 +9,7 @@
     "stateName": "dashboards",
     "urlPrefix": "/dashboards",
     "type": "load",
-    "src": "app/dashboard/dashboard"
+    "src": "app/dashboard/dashboards.component"
   },
   {
     "stateName": "admin",
@@ -21,6 +21,6 @@
     "stateName": "forms",
     "urlPrefix": "/forms",
     "type": "load",
-    "src": "app/forms/forms"
+    "src": "app/forms/demoforms.component"
   }
 ]
