@@ -65,9 +65,9 @@ System.config({
     "clean-css": "npm:clean-css@3.4.12",
     "core-js": "npm:core-js@1.2.6",
     "css": "github:systemjs/plugin-css@0.1.21",
+    "decorators": "github:noelmace/angularjs-decorators@0.0.4",
     "json": "github:systemjs/plugin-json@0.1.2",
     "ocLazyLoad": "github:ocombe/oclazyload@1.0.9",
-    "oclazyload": "github:ocombe/oclazyload@1.0.9",
     "systemjs/plugin-css": "github:systemjs/plugin-css@0.1.21",
     "ui-router-extras": "npm:ui-router-extras@0.0.14",
     "github:angular-ui/ui-router@0.2.18": {
@@ -103,7 +103,7 @@ System.config({
       "path-browserify": "npm:path-browserify@0.0.0"
     },
     "github:jspm/nodelibs-process@0.1.2": {
-      "process": "npm:process@0.11.2"
+      "process": "npm:process@0.11.3"
     },
     "github:jspm/nodelibs-stream@0.1.0": {
       "stream-browserify": "npm:stream-browserify@1.0.0"
@@ -179,7 +179,7 @@ System.config({
     "npm:path-browserify@0.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:process@0.11.2": {
+    "npm:process@0.11.3": {
       "assert": "github:jspm/nodelibs-assert@0.1.0"
     },
     "npm:punycode@1.3.2": {

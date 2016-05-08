@@ -17,6 +17,10 @@ var routing = function(module) {
           newModule = loaded[key[1]];
         }
 
+        if (newModule.$module) {
+            newModule = newModule.$module;
+        }
+
         $ocLazyLoad.load(newModule).then(function() {
           def.resolve();
         }, function() {

@@ -1,12 +1,12 @@
 import angular from 'angular';
 
-export default (configs) => {
+export let routes = (configs) => {
     let params = configs.map((config) => {
         let paramObj = {
-            name: config.name || config.component.selector,
+            name: config.name || config.component.$selector,
             config: {
                 url: config.path,
-                template: config.template || `<${config.component.selector}></${config.component.selector}>`
+                template: config.template || `<${config.component.$selector}></${config.component.$selector}>`
             }
         };
 

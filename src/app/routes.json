@@ -15,7 +15,7 @@
     "stateName": "admin",
     "urlPrefix": "/admin",
     "type": "load",
-    "src": "app/admin/admin"
+    "src": "app/admin/admin.component"
   },
   {
     "stateName": "forms",

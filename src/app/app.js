@@ -5,6 +5,7 @@ import 'angular-ui-router';
 import 'ocLazyLoad';
 import 'common/core';
 import routing from 'common/utils/routing';
+import bootstrap from 'common/utils/bootstrap';
 
 let app = angular.module('sdnSeed', ['ui.router', 'oc.lazyLoad']);
 
@@ -28,11 +29,5 @@ app.config(['$urlRouterProvider', '$locationProvider', '$compileProvider', '$log
     debug: true
   });
 }]);
-
-angular.element(document).ready(function() {
-  angular.bootstrap(document.body, [ app.name ], {
-    strictDi: true
-  });
-});
 
 export default app;
