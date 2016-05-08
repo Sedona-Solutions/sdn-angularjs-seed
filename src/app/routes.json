@@ -21,6 +21,6 @@
     "stateName": "forms",
     "urlPrefix": "/forms",
     "type": "load",
-    "src": "app/forms/demoforms.component"
+    "src": "app/forms/demo-forms.component"
   }
 ]

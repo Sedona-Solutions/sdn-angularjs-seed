@@ -1,6 +1,6 @@
 import angular from 'angular';
 import modalModule from 'common/components/modal';
-import template from './demoforms.component.tpl';
+import template from './demo-forms.component.tpl';
 import { Module } from 'decorators/Module';
 import { Component } from 'decorators/Component';
 import { routes } from 'common/utils/routes';

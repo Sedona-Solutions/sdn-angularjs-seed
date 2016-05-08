@@ -9,7 +9,7 @@ import { routes } from 'common/utils/routes';
 
 
 @Module({
-    name: 'admin.build',
+    name: 'admin.builder',
     dependencies: [
         modalModule.name,
         selectModule.name,
@@ -29,7 +29,7 @@ export class BuilderComponent {
 
 }
 
-angular.module('admin.users').config(
+angular.module('admin.builder').config(
     routes([
         {name: 'admin.builder', path: '/builder', component: BuilderComponent}
     ])
