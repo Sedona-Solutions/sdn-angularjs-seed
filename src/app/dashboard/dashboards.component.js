@@ -5,7 +5,6 @@ import timeModule from 'common/components/time';
 import template from './dashboards.component.tpl';
 import { Module } from 'decorators/Module';
 import { Component } from 'decorators/Component';
-import { routes } from 'common/utils/routes';
 
 @Module({
     name: 'dashboards',

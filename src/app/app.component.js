@@ -5,8 +5,7 @@ import 'angular-ui-router';
 import 'ui-router-extras';
 import 'ocLazyLoad';
 import 'common/core';
-import bootstrap from 'common/utils/bootstrap';
-import template from './app.component.tpl';
+import template from 'app/app.component.tpl';
 import './app.component.css!';
 
 import { Module } from 'decorators/Module';
@@ -26,7 +25,8 @@ import { DashboardComponent } from 'app/dashboard/dashboards.component';
         'ui.router',
         'oc.lazyLoad',
         'ct.ui.router.extras',
-        template.name
+        template.name,
+        DashboardComponent.$ngmodule.name
     ],
     main: true,
     html5mode: {

@@ -1,10 +1,9 @@
-import template from './admin.component.tpl';
+import template from 'app/admin/admin.component.tpl';
 import { Component } from 'decorators/Component';
 import { Module } from 'decorators/Module';
 import { BuilderComponent } from 'app/admin/builder/builder.component';
 import { UsersComponent } from 'app/admin/users/users.component';
 import { Routes } from 'decorators/Routes';
-import { routes } from 'common/utils/routes';
 import './admin.component.css!';
 
 @Routes([
