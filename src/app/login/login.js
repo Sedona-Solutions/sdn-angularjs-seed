@@ -1,6 +1,5 @@
 import angular from 'angular';
 
-import SelectModule from 'common/components/select';
 import DateModule from 'common/components/date';
 import ModalModule from 'common/components/modal';
 import UserModule from 'common/services/user';
@@ -27,7 +26,6 @@ function ConfigureModule($stateProvider){
 
 export default angular
   .module('login', [
-    SelectModule.name,
     DateModule.name,
     ModalModule.name,
     UserModule.name,

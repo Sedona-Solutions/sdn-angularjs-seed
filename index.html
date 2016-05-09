@@ -10,7 +10,7 @@
       <title>Demo App</title>
       <base href="/">
   </head>
-  <body ng-cloak>
+  <body>
 
     <noscript>
       <div class="deprecation-warning">
@@ -20,13 +20,7 @@
       </div>
     </noscript>
 
-    <h1>Welcome</h1>
-    <a ui-sref="login" href="#">Login</a> |
-    <a ui-sref="dashboards" href="#">Dashboard</a> |
-    <a ui-sref="forms" href="#">Forms</a> |
-    <a ui-sref="admin" href="#">Admin</a>
-
-    <ui-view class="content-area" ></ui-view>
+    <sdn-seed></snd-seed>
 
     <!-- build:dev -->
     <script src="jspm_packages/system.js"></script>

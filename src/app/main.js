@@ -1,4 +1,4 @@
-import app from 'app/app';
+import { AppComponent } from 'app/app.component';
 import { bootstrap } from 'common/utils/bootstrap';
 
-bootstrap(app);
+bootstrap(AppComponent);

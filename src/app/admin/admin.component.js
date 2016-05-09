@@ -5,6 +5,7 @@ import { BuilderComponent } from 'app/admin/builder/builder.component';
 import { UsersComponent } from 'app/admin/users/users.component';
 import { Routes } from 'decorators/Routes';
 import { routes } from 'common/utils/routes';
+import './admin.component.css!';
 
 @Routes([
     {name: 'admin.builder', path: '/builder', component: BuilderComponent},
