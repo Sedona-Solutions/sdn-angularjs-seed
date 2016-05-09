@@ -5,7 +5,6 @@ import selectModule from 'common/components/select';
 import template from './builder.component.tpl';
 import { Module } from 'decorators/Module';
 import { Component } from 'decorators/Component';
-import { routes } from 'common/utils/routes';
 
 
 @Module({
@@ -28,9 +27,3 @@ export class BuilderComponent {
     }
 
 }
-
-angular.module('admin.builder').config(
-    routes([
-        {name: 'admin.builder', path: '/builder', component: BuilderComponent}
-    ])
-);
