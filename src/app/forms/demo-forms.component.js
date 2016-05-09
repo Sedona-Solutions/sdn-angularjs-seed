@@ -22,9 +22,3 @@ export class DemoFormsComponent {
     constructor(){
     }
 }
-
-angular.module('forms').config(
-    routes([
-        {name: 'forms', path: '/forms', component: DemoFormsComponent}
-    ])
-);

@@ -31,9 +31,3 @@ export class AdminComponent {
     }
 
 }
-
-angular.module('admin').config(
-    routes([
-        {path: '/admin', component: AdminComponent}
-    ])
-);

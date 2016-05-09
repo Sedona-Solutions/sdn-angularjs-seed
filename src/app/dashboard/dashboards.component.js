@@ -28,10 +28,3 @@ export class DashboardComponent {
     }
 
 }
-
-angular.module('dashboards').config(
-    routes([{
-        path: '/dashboards',
-        component: DashboardComponent
-    }])
-);
