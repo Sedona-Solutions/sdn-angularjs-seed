@@ -1,7 +1,8 @@
 import angular from 'angular';
-import template from './users.component.tpl';
 import { Component } from 'decorators/Component';
 import { Module } from 'decorators/Module';
+
+import template from 'app/admin/users.component.tpl';
 
 @Component({
     selector: 'users',

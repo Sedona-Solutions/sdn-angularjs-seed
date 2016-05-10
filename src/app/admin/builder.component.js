@@ -1,9 +1,9 @@
 import angular from 'angular';
 
-import modalModule from 'common/components/modal';
-import template from './builder.component.tpl';
 import { Module } from 'decorators/Module';
 import { Component } from 'decorators/Component';
+
+import template from 'app/admin/builder.component.tpl';
 
 @Component({
     selector: 'builder',

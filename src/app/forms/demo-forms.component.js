@@ -1,14 +1,13 @@
 import angular from 'angular';
 import modalModule from 'common/components/modal';
-import template from './demo-forms.component.tpl';
 import { Module } from 'decorators/Module';
 import { Component } from 'decorators/Component';
+import template from 'app/forms/demo-forms.component.tpl';
 
 @Module({
     name: 'forms',
     dependencies: [
-      template.name,
-      modalModule.name
+        modalModule.name
     ]
 })
 @Component({
@@ -18,6 +17,5 @@ import { Component } from 'decorators/Component';
 export class DemoFormsComponent {
 
     /* @ngInject */
-    constructor(){
-    }
+    constructor() {}
 }

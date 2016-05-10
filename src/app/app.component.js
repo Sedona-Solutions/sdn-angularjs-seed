@@ -5,7 +5,6 @@ import 'angular-ui-router';
 import 'ui-router-extras';
 import 'ocLazyLoad';
 import 'common/core';
-import template from 'app/app.component.tpl';
 import './app.component.css!';
 
 import { Module } from 'decorators/Module';
@@ -13,6 +12,7 @@ import { Component } from 'decorators/Component';
 import { lazyLoadConfig } from 'decorators/utils/routes';
 import { Routes } from 'decorators/Routes';
 import { DashboardComponent } from 'app/dashboard/dashboards.component';
+import template from 'app/app.component.tpl';
 
 @Routes([
     {name: 'admin', path: '/admin', lazy: true, component: 'app/admin/admin.component'},
@@ -25,7 +25,6 @@ import { DashboardComponent } from 'app/dashboard/dashboards.component';
         'ui.router',
         'oc.lazyLoad',
         'ct.ui.router.extras',
-        template.name,
         DashboardComponent.$ngmodule.name
     ],
     main: true,
@@ -37,10 +36,12 @@ import { DashboardComponent } from 'app/dashboard/dashboards.component';
 })
 @Component({
     selector: 'sdn-seed',
-    templateUrl: template.name
+    templateUrl: 'app/app.component.tpl.html'
 })
 export class AppComponent {
 
     /* @ngInject */
-    constructor() {}
+    constructor($log) {
+        $log.debug('appComponent');
+    }
 }

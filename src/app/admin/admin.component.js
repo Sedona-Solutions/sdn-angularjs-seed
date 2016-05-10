@@ -1,4 +1,3 @@
-import template from 'app/admin/admin.component.tpl';
 import { Component } from 'decorators/Component';
 import { Module } from 'decorators/Module';
 import { BuilderComponent } from 'app/admin/builder.component';
@@ -7,18 +6,14 @@ import usersTemplate from 'app/admin/users.component.tpl';
 import { UsersComponent } from 'app/admin/users.component';
 import { Routes } from 'decorators/Routes';
 import './admin.component.css!';
+import template from 'app/admin/admin.component.tpl';
 
 @Routes([
     {name: 'admin.builder', path: '/builder', component: BuilderComponent},
     {name: 'admin.users', path: '/users', component: UsersComponent}
 ])
 @Module({
-    name: 'admin',
-    dependencies: [
-        builderTemplate.name,
-        usersTemplate.name,
-        template.name
-    ]
+    name: 'admin'
 })
 @Component({
     selector: 'admin',
