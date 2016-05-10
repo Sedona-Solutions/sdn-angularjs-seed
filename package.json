@@ -78,6 +78,8 @@
     "scripts": {
         "postinstall": "jspm install",
         "start": "gulp watch serve",
-        "link:decorators": "jspm i --link github:noelmace/angularjs-decorators@dev -y"
+        "link:decorators": "jspm i --link github:noelmace/angularjs-decorators@dev -y",
+        "version": "npm run build && git add --force dist/ && git add package.json",
+        "postversion": "git rm -r dist/ && git commit -m 'CLEAN AFTER RELEASE'",
     }
 }
