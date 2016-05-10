@@ -1,10 +1,11 @@
 import { Component } from 'decorators/Component';
 import { Module } from 'decorators/Module';
-import { BuilderComponent } from 'app/admin/builder.component';
-import builderTemplate from 'app/admin/builder.component.tpl';
-import usersTemplate from 'app/admin/users.component.tpl';
-import { UsersComponent } from 'app/admin/users.component';
 import { Routes } from 'decorators/Routes';
+
+import { BuilderComponent } from 'app/admin/builder.component';
+import { UsersComponent } from 'app/admin/users.component';
+import { MessageService } from 'app/admin/message.service';
+
 import './admin.component.css!';
 import template from 'app/admin/admin.component.tpl';
 
@@ -21,13 +22,21 @@ import template from 'app/admin/admin.component.tpl';
     directives: [
         BuilderComponent,
         UsersComponent
+    ],
+    providers: [
+        MessageService
     ]
 })
 export class AdminComponent {
 
     /* @ngInject */
-    constructor() {
+    constructor(messageService) {
         console.log('admin!');
+        this.messageService = messageService;
+    }
+
+    getMessage() {
+        this.message = this.messageService.message;
     }
 
 }
