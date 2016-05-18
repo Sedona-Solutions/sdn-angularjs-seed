@@ -4,28 +4,32 @@ import angular from 'angular';
 import 'angular-ui-router';
 import 'ui-router-extras';
 import 'ocLazyLoad';
-import 'common/core';
 import './app.component.css!';
+import 'angular-material';
+import 'restangular';
+
+import 'angular-material/angular-material.min.css!';
+import 'app/app.component.css!';
 
 import { Module } from 'decorators/Module';
 import { Component } from 'decorators/Component';
 import { lazyLoadConfig } from 'decorators/utils/routes';
 import { Routes } from 'decorators/Routes';
-import { DashboardComponent } from 'app/dashboard/dashboards.component';
-import template from 'app/app.component.tpl';
+
+import { HomeComponent } from 'app/layout/home.component';
 
 @Routes([
-    {name: 'admin', path: '/admin', lazy: true, component: 'app/admin/admin.component'},
-    {name: 'dashboards', path: '/dashboards', component: DashboardComponent, useAsDefault: true},
-    {name: 'forms', path: '/forms', lazy: true, component: 'app/forms/demo-forms.component'}
+    {name: 'home', path: '/', component: HomeComponent, useAsDefault: true},
+    {name: 'intervenants', path: '/intervenants', lazy: true, component: 'app/intervenants/intervenants.component'}
 ])
 @Module({
-    name: 'sdnSeed',
+    name: 'periclesApp',
     dependencies: [
         'ui.router',
         'oc.lazyLoad',
         'ct.ui.router.extras',
-        DashboardComponent.$ngmodule.name
+        'ngMaterial',
+        'restangular'
     ],
     main: true,
     html5mode: {
@@ -35,8 +39,8 @@ import template from 'app/app.component.tpl';
     debug: true
 })
 @Component({
-    selector: 'sdn-seed',
-    templateUrl: 'app/app.component.tpl.html'
+    selector: 'pericles-app',
+    templateUrl: 'app/app.component.tpl'
 })
 export class AppComponent {
 
