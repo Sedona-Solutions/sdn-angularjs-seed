@@ -3,7 +3,8 @@ import {Component} from 'decorators/Component';
 import {Module} from 'decorators/Module';
 import {Routes} from 'decorators/Routes';
 
-import template from 'app/intervenants/intervenants.component.tpl.html';
+import template from 'app/intervenants/intervenants.component.tpl';
+
 import { REST_ROUTES } from 'common/REST_ROUTES';
 import { WORDING } from 'common/WORDING';
 

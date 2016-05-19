@@ -18,9 +18,11 @@ import { Routes } from 'decorators/Routes';
 
 import { HomeComponent } from 'app/layout/home.component';
 
+import template from 'app/app.component.tpl';
+
 @Routes([
     {name: 'home', path: '/', component: HomeComponent, useAsDefault: true},
-    {name: 'intervenants', path: '/intervenants', lazy: true, component: 'app/intervenants/intervenants.component'}
+    {name: 'intervenants', path: '/intervenants', lazy: true, component: 'app/intervenants/intervenants.component.js'}
 ])
 @Module({
     name: 'periclesApp',
@@ -40,7 +42,7 @@ import { HomeComponent } from 'app/layout/home.component';
 })
 @Component({
     selector: 'pericles-app',
-    templateUrl: 'app/app.component.tpl'
+    templateUrl: template.name
 })
 export class AppComponent {
 
