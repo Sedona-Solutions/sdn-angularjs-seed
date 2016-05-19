@@ -61,7 +61,6 @@
     "dependencies": {
       "angular": "github:angular/bower-angular@^1.5.3",
       "angular-ui-router": "github:angular-ui/ui-router@^0.2.15",
-      "babel-polyfill": "npm:babel-polyfill@^6.8.0",
       "clean-css": "npm:clean-css@^3.4.12",
       "css": "github:systemjs/plugin-css@^0.1.21",
       "decorators": "github:Sedona-Solutions/angularjs-decorators@^0.2.2",
