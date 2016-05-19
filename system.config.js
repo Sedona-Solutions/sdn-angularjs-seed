@@ -53,6 +53,12 @@ System.config({
       "deps": [
         "npm:ui-router-extras@0.0.14/release/modular/ct-ui-router-extras.core"
       ]
+    },
+    "github:mgonto/restangular@1.5.2/restangular.js": {
+      "format": "global",
+      "globals": {
+        "_": "lodash"
+      }
     }
   },
 
@@ -68,6 +74,7 @@ System.config({
     "css": "github:systemjs/plugin-css@0.1.21",
     "decorators": "github:Sedona-Solutions/angularjs-decorators@0.2.2",
     "json": "github:systemjs/plugin-json@0.1.2",
+    "lodash": "github:lodash/lodash@3.10.1",
     "ocLazyLoad": "github:ocombe/oclazyload@1.0.9",
     "restangular": "github:mgonto/restangular@1.5.2",
     "systemjs/plugin-css": "github:systemjs/plugin-css@0.1.21",
@@ -130,7 +137,7 @@ System.config({
     },
     "github:mgonto/restangular@1.5.2": {
       "angular": "github:angular/bower-angular@1.5.5",
-      "lodash": "npm:lodash@3.10.1"
+      "lodash": "github:lodash/lodash@3.10.1"
     },
     "npm:amdefine@1.0.0": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
@@ -197,9 +204,6 @@ System.config({
     },
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
-    },
-    "npm:lodash@3.10.1": {
-      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:os-browserify@0.1.2": {
       "os": "github:jspm/nodelibs-os@0.1.0"
