@@ -1,6 +1,25 @@
-<h1>Welcome</h1>
-<a ui-sref="dashboards" href="#">Dashboard</a> |
-<a ui-sref="forms" href="#">Forms</a> |
-<a ui-sref="admin" href="#">Admin</a>
+<md-toolbar class="md-hue-2">
+    <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
+            <md-icon>menu</md-icon>
+        </md-button>
+        <h2>
+            <span>Sedona AngularJS Seed - Demo</span>
+        </h2>
+    </div>
+</md-toolbar>
 
-<ui-view class="content-area" ></ui-view>
+<md-sidenav class="md-sidenav-left md-whiteframe-4dp" md-component-id="left">
+    <md-content layout-padding>
+        <md-list>
+            <md-list-item ui-sref="home">
+                home
+            </md-list-item>
+            <md-list-item ui-sref="dashboards">
+                dashboards
+            </md-list-item>
+        </md-list>
+    </md-content>
+</md-sidenav>
+
+<ui-view class="content-area"></ui-view>

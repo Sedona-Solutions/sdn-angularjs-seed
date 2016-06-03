@@ -9,6 +9,7 @@
     "babel-preset-es2015": "^6.6.0",
     "babel-preset-stage-3": "^6.5.0",
     "browser-sync": "^2.12.5",
+    "concurrently": "^2.1.0",
     "connect-history-api-fallback": "^1.2.0",
     "del": "^2.2.0",
     "es6-module-loader": "^0.17.11",
@@ -60,25 +61,45 @@
     "configFile": "system.config.js",
     "dependencies": {
       "angular": "github:angular/bower-angular@^1.5.3",
+      "angular-material": "github:angular/bower-material@^1.0.8",
       "angular-ui-router": "github:angular-ui/ui-router@^0.2.15",
       "clean-css": "npm:clean-css@^3.4.12",
       "css": "github:systemjs/plugin-css@^0.1.21",
       "decorators": "github:Sedona-Solutions/angularjs-decorators@^0.2.2",
       "json": "github:systemjs/plugin-json@^0.1.2",
+      "lodash": "github:lodash/lodash@3.10.1",
       "ocLazyLoad": "github:ocombe/oclazyload@^1.0.5",
+      "restangular": "github:mgonto/restangular@^1.5.2",
       "ui-router-extras": "npm:ui-router-extras@^0.0.14"
     },
     "devDependencies": {
       "angular-mocks": "github:angular/bower-angular-mocks@^1.5.3",
       "babel": "npm:babel-core@^5.8.24",
       "babel-runtime": "npm:babel-runtime@^5.8.24",
-      "core-js": "npm:core-js@^2.4.0"
+      "core-js": "npm:core-js@^1.1.4"
+    },
+    "overrides": {
+      "github:mgonto/restangular@1.5.2": {
+        "shim": {
+          "restangular": {
+            "deps": [
+              "angular",
+              "lodash"
+            ]
+          }
+        }
+      }
     }
   },
   "scripts": {
     "postinstall": "jspm install",
     "start": "gulp watch serve",
     "link:decorators": "jspm i --link github:noelmace/angularjs-decorators@dev -y",
-    "version": "git add package.json"
+    "version": "git add package.json",
+    "test": "gulp test",
+    "wd": "gulp webdriver-standalone",
+    "e2e": "gulp sauce-test",
+    "lint": "gulp lint",
+    "release": "gulp release"
   }
 }

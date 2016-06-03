@@ -6,18 +6,30 @@ import 'ui-router-extras';
 import 'ocLazyLoad';
 import 'common/core';
 import './app.component.css!';
+import 'angular-material';
+import 'angular-material/angular-material.min.css!';
+import 'restangular';
+
+import 'angular-material/angular-material.min.css!';
+import 'app/app.component.css!';
 
 import { Module } from 'decorators/Module';
 import { Component } from 'decorators/Component';
 import { lazyLoadConfig } from 'decorators/utils/routes';
 import { Routes } from 'decorators/Routes';
 import { DashboardComponent } from 'app/dashboard/dashboards.component';
+
+import { HomeComponent } from 'app/layout/home.component';
+
 import template from 'app/app.component.tpl';
+
+import * as Config from 'app/app.config';
 
 @Routes([
     {name: 'admin', path: '/admin', lazy: true, component: 'app/admin/admin.component'},
-    {name: 'dashboards', path: '/dashboards', component: DashboardComponent, useAsDefault: true},
-    {name: 'forms', path: '/forms', lazy: true, component: 'app/forms/demo-forms.component'}
+    {name: 'dashboards', path: '/dashboards', component: DashboardComponent},
+    {name: 'forms', path: '/forms', lazy: true, component: 'app/forms/demo-forms.component'},
+    {path: '/', component: HomeComponent, useAsDefault: true}
 ])
 @Module({
     name: 'sdnSeed',
@@ -25,6 +37,8 @@ import template from 'app/app.component.tpl';
         'ui.router',
         'oc.lazyLoad',
         'ct.ui.router.extras',
+        'ngMaterial',
+        'restangular',
         DashboardComponent.$ngmodule.name
     ],
     main: true,
@@ -32,16 +46,22 @@ import template from 'app/app.component.tpl';
         enabled: true,
         requireBase: false
     },
-    debug: true
+    debug: true,
+    configs: [
+        Config.mdTheming
+    ]
 })
 @Component({
     selector: 'sdn-seed',
-    templateUrl: 'app/app.component.tpl.html'
+    templateUrl: template.name,
+    directives: [
+        HomeComponent
+    ]
 })
 export class AppComponent {
 
     /* @ngInject */
     constructor($log) {
-        $log.debug('appComponent');
+        $log.debug('App Component');
     }
 }
