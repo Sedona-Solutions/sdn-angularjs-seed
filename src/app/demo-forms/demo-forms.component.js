@@ -1,8 +1,7 @@
-import angular from 'angular';
 import modalModule from 'common/components/modal';
 import { Module } from 'decorators/Module';
 import { Component } from 'decorators/Component';
-import template from 'app/forms/demo-forms.component.tpl';
+import template from 'app/demo-forms/demo-forms.component.tpl';
 
 @Module({
     name: 'forms',
@@ -11,7 +10,7 @@ import template from 'app/forms/demo-forms.component.tpl';
     ]
 })
 @Component({
-    selector: 'demoforms',
+    selector: 'demo-forms',
     templateUrl: template.name
 })
 export class DemoFormsComponent {

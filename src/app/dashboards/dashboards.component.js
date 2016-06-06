@@ -2,7 +2,7 @@ import angular from 'angular';
 import { modalModule } from 'common/core';
 import popupModule from 'common/components/popup';
 import timeModule from 'common/components/time';
-import template from 'app/dashboard/dashboards.component.tpl';
+import template from 'app/dashboards/dashboards.component.tpl';
 import { Module } from 'decorators/Module';
 import { Component } from 'decorators/Component';
 

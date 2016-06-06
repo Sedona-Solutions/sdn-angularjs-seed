@@ -50,6 +50,7 @@
     "rsvp": "^3.2.1",
     "run-sequence": "^1.1.5",
     "systemjs": "^0.19.27",
+    "systemjs-builder": "^0.15.19",
     "systemjs-route-bundler": "^1.6.0",
     "vinyl-paths": "^2.1.0"
   },

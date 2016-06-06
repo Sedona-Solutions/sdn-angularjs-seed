@@ -6,7 +6,7 @@ import { BuilderComponent } from 'app/admin/builder.component';
 import { UsersComponent } from 'app/admin/users.component';
 import { MessageService } from 'app/admin/message.service';
 
-import './admin.component.css!';
+import 'app/admin/admin.component.css!';
 import template from 'app/admin/admin.component.tpl';
 
 @Routes([

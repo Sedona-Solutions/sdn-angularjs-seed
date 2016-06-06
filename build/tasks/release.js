@@ -1,65 +1,77 @@
 var gulp = require('gulp');
 var insert = require('gulp-insert');
-var concatFile = require('gulp-concat');
 var runSequence = require('run-sequence');
-var routeBundler = require('systemjs-route-bundler');
 var paths = require('../paths');
+var Builder = require('systemjs-builder');
+var fs = require('fs');
+var path = require('path');
 
-gulp.task('cache-bust', function () {
-  var cacheBust = "var systemLocate = System.locate; System.locate = function(load) { var cacheBust = '?bust=' + " + Math.round(new Date() / 1000) +"; return Promise.resolve(systemLocate.call(this, load)).then(function(address) { if (address.indexOf('bust') > -1 || address.indexOf('css') > -1 || address.indexOf('json') > -1) return address; return address + cacheBust; });}\n"
-  return gulp.src('dist/app/app.js')
-    .pipe(insert.prepend("window.prod = true;\n"))
-    .pipe(insert.prepend(cacheBust))
-    .pipe(gulp.dest('dist/app'));
-});
-
-gulp.task('inline-systemjs', function () {
-  return gulp.src([
-    './jspm_packages/es6-module-loader.js',
-    './jspm_packages/system.js',
-    './system.config.js',
-    'dist/app/app.js'
-  ])
-  //.pipe(uglify())
-  .pipe(concatFile('app/app.js'))
-  .pipe(gulp.dest(paths.output));
-});
+function getDirectories(srcpath) {
+    return fs.readdirSync(srcpath).filter(function (file) {
+        return fs.statSync(path.join(srcpath, file)).isDirectory() && file != 'layout';
+    });
+}
 
 gulp.task('release', function (callback) {
-  return runSequence(
-    'clean',
-    'build',
-    'bundle',
-    'cache-bust',
-    'replace',
-    'inline-systemjs',
-    callback
-  );
+    return runSequence(
+        'clean',
+        'build',
+        'bundle',
+        callback
+    );
 });
 
-gulp.task('bundle', function () {
-  var routes = require('../../dist/app/routes.json');
-  routes = routes.map(function (r) {
-    return r.src;
-  });
+gulp.task('bundle', function (callback) {
+    var directories = getDirectories('dist/app');
+    var modulesBuilder = new Builder('./', './system.config.js');
+    var toExcludeFromMain = directories.map((moduleName) => {
+        return `prod/app/${moduleName}.js`
+    }).join(' - ');
 
-  var config = {
-    dest: 'dist',
-    main: 'app/app.js',
-    destMain: 'dist/app',
-    routes: routes,
-    bundleThreshold: 0.6,
-    jspmConfigPath: './system.config.js',
-    sourceMaps: false,
-    minify: true,
-    mangle: true,
-    verboseOutput: true,
-    ignoredPaths: [
-      'jspm_packages',
-      'npm:',
-      'github:'
-    ]
-  };
+    modulesBuilder.config({
+        meta: {
+            'jspm_packages/*': {build: false},
+            'common/*': {build: false}
+        }
+    });
 
-  return routeBundler.build(config);
+    var modulesPromises = directories.map((moduleName) => {
+        var pathToDir = 'dist/app/' + moduleName + '/';
+        var moduleFile = pathToDir + moduleName + '.component.js';
+
+        return modulesBuilder.bundle(moduleFile, 'prod/app/' + moduleName + '.js', {minify: false, sourcemap: true})
+            .then(function () {
+                console.log(`${moduleName} build complete`);
+            })
+            .catch(function (err) {
+                console.log(`error during ${moduleName} build`);
+                console.log(err);
+            });
+    });
+
+    Promise.all(modulesPromises).then(() => {
+        var mainBuilder = new Builder('./', './system.config.js');
+
+        mainBuilder.config({
+            meta: {
+                'jspm_packages/*': {build: false}
+            }
+        });
+
+        mainBuilder.buildStatic(`app/main.js - ${toExcludeFromMain}`, 'prod/app/main.js', {
+                minify: false,
+                sourcemap: true,
+                runtime: false
+            })
+            .then(function () {
+                console.log('main module build complete');
+                callback();
+            })
+            .catch(function (err) {
+                console.log('error during main module build');
+                console.log(err);
+                callback();
+            });
+    });
+
 });
