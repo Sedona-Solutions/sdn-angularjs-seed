@@ -1,6 +1,6 @@
 <md-toolbar class="md-hue-2">
     <div class="md-toolbar-tools">
-        <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
+        <md-button class="md-icon-button" aria-label="Settings" ng-click="$ctrl.toggleLeftMenu()">
             <md-icon>menu</md-icon>
         </md-button>
         <h2>
@@ -8,18 +8,29 @@
         </h2>
     </div>
 </md-toolbar>
+<section layout="row" flex>
 
-<md-sidenav class="md-sidenav-left md-whiteframe-4dp" md-component-id="left">
-    <md-content layout-padding>
-        <md-list>
-            <md-list-item ui-sref="home">
-                home
-            </md-list-item>
-            <md-list-item ui-sref="dashboards">
-                dashboards
-            </md-list-item>
-        </md-list>
+    <md-sidenav class="md-sidenav-left md-whiteframe-4dp" md-component-id="main-left">
+        <md-content layout-padding>
+            <md-list>
+                <md-list-item ui-sref="home" ng-click="$ctrl.toggleLeftMenu()">
+                    home
+                </md-list-item>
+                <md-list-item ui-sref="dashboards" ng-click="$ctrl.toggleLeftMenu()">
+                    dashboards
+                </md-list-item>
+                <md-list-item ui-sref="forms" ng-click="$ctrl.toggleLeftMenu()">
+                    forms
+                </md-list-item>
+                <md-list-item ui-sref="admin" ng-click="$ctrl.toggleLeftMenu()">
+                    admin
+                </md-list-item>
+            </md-list>
+        </md-content>
+    </md-sidenav>
+    <md-content flex layout-padding>
+        <div layout="column" layout-fill layout-align="top center">
+            <ui-view class="content-area"></ui-view>
+        </div>
     </md-content>
-</md-sidenav>
-
-<ui-view class="content-area"></ui-view>
+</section>

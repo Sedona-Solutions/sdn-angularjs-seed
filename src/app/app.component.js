@@ -24,6 +24,7 @@ import { HomeComponent } from 'app/layout/home.component';
 import template from 'app/app.component.tpl';
 
 import * as Config from 'app/app.config';
+import * as MaterialUtil from 'common/MaterialUtil';
 
 @Routes([
     {name: 'admin', path: '/admin', lazy: true, component: 'app/admin/admin.component'},
@@ -61,7 +62,9 @@ import * as Config from 'app/app.config';
 export class AppComponent {
 
     /* @ngInject */
-    constructor($log) {
+    constructor($log, $mdSidenav) {
         $log.debug('App Component');
+        this.toggleLeftMenu = MaterialUtil.buildToggler($mdSidenav, $log, 'main-left');
     }
+
 }
