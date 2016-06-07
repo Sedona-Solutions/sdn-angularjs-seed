@@ -10,6 +10,7 @@ var htmlMin = require('gulp-minify-html');
 var ngHtml2Js = require("gulp-ng-html2js");
 var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
+var vfs = require('vinyl-fs');
 
 var paths = require('../paths');
 var compilerOptions = require('../babelOptions');
@@ -21,12 +22,13 @@ var cleancss = new lessPluginCleanCSS({
 });
 
 gulp.task('build', function (callback) {
-  return runSequence(
-    'clean',
-    ['less', 'html', 'es6', 'move'],
-    callback
-  );
+    return runSequence(
+        'clean',
+        ['less', 'html', 'es6', 'move'],
+        callback
+    );
 });
+
 
 gulp.task('es6', function () {
   return gulp.src(paths.source, { base: 'src' })
@@ -72,4 +74,9 @@ gulp.task('less', function () {
     .pipe(sourcemaps.write("."))
     .pipe(gulp.dest(paths.output))
     .pipe(browserSync.reload({ stream: true }));
+});
+
+gulp.task('dist:jspm', function() {
+    return gulp.src(paths.jspm)
+        .pipe(gulp.dest('dist/jspm_packages'));
 });

@@ -7,8 +7,18 @@ gulp.task('serve', ['watch'], function (done) {
     open: false,
     port: 9000,
     server: {
-      baseDir: ['.'],
+      baseDir: ['./'],
       middleware: [ historyApiFallback() ]
     }
   }, done);
+});
+
+gulp.task('serve:prod', ['release'], function (done) {
+    browserSync({
+        open: false,
+        port: 9001,
+        server: {
+            baseDir: ['prod/']
+        }
+    }, done);
 });
