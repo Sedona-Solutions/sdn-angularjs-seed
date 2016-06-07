@@ -10,7 +10,6 @@ import 'angular-material';
 import 'angular-material/angular-material.min.css!';
 import 'restangular';
 
-import 'angular-material/angular-material.min.css!';
 import 'app/app.component.css!';
 
 import { Module } from 'decorators/Module';

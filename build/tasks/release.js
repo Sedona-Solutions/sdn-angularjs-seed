@@ -54,7 +54,7 @@ gulp.task('bundle', function (callback) {
         var pathToDir = 'app/' + moduleName + '/';
         var moduleFile = pathToDir + moduleName + '.component.js';
 
-        return modulesBuilder.bundle(moduleFile, 'prod/app/' + moduleName + '.js', {minify: false, sourcemap: true})
+        return modulesBuilder.bundle(moduleFile, 'prod/app/' + moduleName + '.js', {minify: true, sourcemap: true})
             .then(function () {
                 console.log(`${moduleName} build complete`);
             })
@@ -71,7 +71,7 @@ gulp.task('bundle', function (callback) {
             'babel/polyfill',
             'prod/bundled_packages/babel-polyfill.js',
             {
-                minify: false,
+                minify: true,
                 sourcemap: true
             }
         ).then(() => {
@@ -95,7 +95,7 @@ gulp.task('bundle', function (callback) {
         });
 
         mainBuilder.build(`app/main.js - ${toExcludeFromMain}`, 'prod/app/main.js', {
-                minify: false,
+                minify: true,
                 sourcemap: true,
                 /*runtime: false,
                  format: 'amd'*/
