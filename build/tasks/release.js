@@ -64,6 +64,7 @@ gulp.task('bundle', function (callback) {
             });
     });
 
+    /* // babel-polyfill bundle - uncomment if you need separated dependencies
     var dependenciesBuilder = new Builder('./', paths.systemConfig);
 
     modulesPromises.push(
@@ -78,13 +79,31 @@ gulp.task('bundle', function (callback) {
             bundles['bundled_packages/babel-polyfill.js'] = ['babel/polyfill', 'core-js/*', 'core/*'];
         })
     );
+    */
+
+    var dependenciesBuilder = new Builder('./', paths.systemConfig);
+
+    modulesPromises.push(
+        dependenciesBuilder.bundle(
+            'app/main - app/**/* - common/**/*',
+            'prod/bundled_packages/all.js',
+            {
+                minify: true,
+                sourcemap: true
+            }
+        ).then(() => {
+            bundles['bundled_packages/all.js'] = ['angular', 'babel/*'];
+        })
+    );
 
     Promise.all(modulesPromises).then(() => {
         var mainBuilder = new Builder('./', paths.systemConfig);
 
         mainBuilder.config({
             meta: {
-                'jspm_packages/*': {build: false}
+                /* // uncomment if you need separated dependencies
+                'jspm_packages/!*': {build: false}
+                */
             },
             paths: {
                 "app/*": "dist/app/*",
@@ -94,7 +113,7 @@ gulp.task('bundle', function (callback) {
             bundles
         });
 
-        mainBuilder.build(`app/main.js - ${toExcludeFromMain}`, 'prod/app/main.js', {
+        mainBuilder.bundle(`app/main.js - ${toExcludeFromMain}`, 'prod/app/main.js', {
                 minify: true,
                 sourcemap: true,
                 /*runtime: false,
