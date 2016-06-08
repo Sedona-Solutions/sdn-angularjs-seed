@@ -1,6 +1,21 @@
 {
   "name": "sdn-angularjs-seed",
   "version": "0.1.0",
+  "license": "MIT",
+  "description": "Sedona AngularJS seed",
+  "author": {
+      "name": "Sedona Solutions - Noël Macé",
+      "email": "nmace@sedona.fr",
+      "url": "http://www.sedona.fr/sedona-solutions/"
+  },
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/Sedona-Solutions/sdn-angularjs-seed.git"
+  },
+  "bugs": {
+      "url": "https://github.com/Sedona-Solutions/sdn-angularjs-seed/issues",
+      "email": "nmace@sedona.fr"
+  },
   "devDependencies": {
     "babel-core": "^6.7.7",
     "babel-plugin-syntax-decorators": "^6.5.0",
