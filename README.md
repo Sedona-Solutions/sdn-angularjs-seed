@@ -1,21 +1,25 @@
-# Sedona angularjs seed - step 2
+Sedona angularjs seed
+================================
 
-AngularJS to Angular2 transition : step 2 - SystemJS.
+Current state
+-------------------
 
-## Work In Progress
+This seed currently match the step 2 (Module Loading and home made decorators) of our internal transition path from AngularJS to Angular2.
+
+### Work In Progress
 
 This is a work in progress.
 
-Planned steps are :
-- npm dependencies upgrade (done)
-- jspm dependencies upgrade (done)
-- use noelmace/angularjs-decorators (done)
-- drop systemjs-route-bundler and replace it by a KISS gulp-jspm-build task
-- addapt and externalise build tasks
+Remaining steps are :
+- drop systemjs-route-bundler and replace it by systemjs builder (nearly done - need some optimisations)
 - migration from jslint to eslint
-- apply Sedona angularjs guidelines and (upgraded) eslint-config
+- migration from Less to SCSS
+- add HTML validation
+- add client side commit hooks and init script
+- inline (source code) documentation
 
-## How To
+How To
+-------------
 
 ### Install & Run
 
@@ -41,9 +45,32 @@ run `npm run lint` to run jshint
 
 run `npm run release` bundle, cache busting, and minify
 
-## Versions
+Engines
+-------------
+
+This project is strongly bind to :
+* gulp
+* system.js and jspm
+* angularjs 1.5
+* babel.js
+* angular material (at a lower level)
+
+### Versions
 The project has been tested with the following environment:
 
 - node v5.4.0
 - npm v3.5.3
 - jspm v0.16.33
+
+Credits
+-----------
+
+SDN-AngularJS-Seed is created and maintained by [Sedona](http://www.sedona.fr).
+
+It is available under the MIT Licence, more details in the LICENCE file.
+
+We would like to thanks the authors of the different libraries and bundle
+used in this solution.
+
+* SDN-AngularJS-Seed was based on the angular1-systemjs-seed project, from Swimlane
+[github:swimlane/angular1-systemjs-seed](https://github.com/swimlane/angular1-systemjs-seed)
