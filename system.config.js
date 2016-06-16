@@ -1,12 +1,5 @@
 System.config({
     defaultJSExtensions: true,
-    transpiler: "babel",
-    babelOptions: {
-        "optional": [
-            "runtime",
-            "optimisation.modules.system"
-        ]
-    },
     paths: {
         "systemjs-test/*": "src/*",
         // replace:next:"app/*": "app/*",
