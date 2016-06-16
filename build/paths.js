@@ -1,6 +1,7 @@
 module.exports = {
     source: ['src/app/{,*/,*/*/}*.js', 'src/common/{,*/,*/*/}*.js'],
     html: ['src/app/{,*/,*/*/}*.html'],
+    config: ['src/config/{,*/,*/*/}*.json'],
     index: 'index.html',
     json: ['src/app/{,*/,*/*/}/*.json', 'src/common/{,*/,*/*/}/*.json'],
     templates: 'src/**/*.tpl.html',

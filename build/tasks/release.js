@@ -32,7 +32,9 @@ gulp.task('bundle', function (callback) {
     var modulesBuilder = new Builder('./', paths.systemConfig);
     var toExcludeFromMain = directories.map((moduleName) => {
         return `prod/app/${moduleName}.js`
-    }).join(' - ');
+    });
+    toExcludeFromMain.push('prod/config/*');
+    toExcludeFromMain = toExcludeFromMain.join(' - ');
     directories.forEach((moduleName) => {
         bundles[`app/${moduleName}.js`] = [`app/${moduleName}/*`];
     });
@@ -151,4 +153,7 @@ gulp.task('index-process', function () {
 gulp.task('prod:dependencies', function () {
     gulp.src(paths.jspm)
         .pipe(gulp.dest('prod/jspm_packages/'));
+
+    gulp.src(paths.config)
+        .pipe(gulp.dest('prod/config/'));
 });

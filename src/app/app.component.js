@@ -9,7 +9,9 @@ import './app.component.css!';
 import 'angular-material';
 import 'angular-material/angular-material.min.css!';
 import 'restangular';
+import * as config from 'config/config.json!';
 
+import 'angular-material/angular-material.min.css!';
 import 'app/app.component.css!';
 
 import { Module } from 'decorators/Module';
@@ -28,7 +30,7 @@ import * as MaterialUtil from 'common/MaterialUtil';
 @Routes([
     {name: 'admin', path: '/admin', lazy: true, component: 'app/admin/admin.component'},
     {name: 'dashboards', path: '/dashboards', component: DashboardComponent},
-    {name: 'forms', path: '/forms', lazy: true, component: 'app/demo-forms/demo-forms.component'},
+    {name: 'forms', path: '/forms', lazy: true, component: 'app/forms/demo-forms.component'},
     {path: '/', component: HomeComponent, useAsDefault: true}
 ])
 @Module({
@@ -43,7 +45,7 @@ import * as MaterialUtil from 'common/MaterialUtil';
     ],
     main: true,
     html5mode: {
-        enabled: true,
+        enabled: config.html5,
         requireBase: false
     },
     debug: true,
