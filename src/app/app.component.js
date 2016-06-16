@@ -11,7 +11,6 @@ import 'angular-material/angular-material.min.css!';
 import 'restangular';
 import * as config from 'config/config.json!';
 
-import 'angular-material/angular-material.min.css!';
 import 'app/app.component.css!';
 
 import { Module } from 'decorators/Module';
