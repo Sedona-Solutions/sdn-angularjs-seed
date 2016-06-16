@@ -1,10 +1,11 @@
 System.config({
-    baseURL: "/",
     defaultJSExtensions: true,
     paths: {
         "systemjs-test/*": "src/*",
         // replace:next:"app/*": "app/*",
         "app/*": "dist/app/*",
+        // replace:next:"config/*": "config/*",
+        "config/*": "dist/config/*",
         // replace:next:"common/*": "common/*",
         "common/*": "dist/common/*",
         // replace:next:"assets/*": "assets/*",
@@ -18,8 +19,6 @@ System.config({
     buildCSS: true,
     separateCSS: false,
     // replace:bundles
-    
-
     meta: {
         "github:angular/bower-angular@1.5.5/angular": {
             "format": "global",

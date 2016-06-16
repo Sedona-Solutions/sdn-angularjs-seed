@@ -9,6 +9,7 @@ import './app.component.css!';
 import 'angular-material';
 import 'angular-material/angular-material.min.css!';
 import 'restangular';
+import * as config from 'config/config.json!';
 
 import 'app/app.component.css!';
 
@@ -43,7 +44,7 @@ import * as MaterialUtil from 'common/MaterialUtil';
     ],
     main: true,
     html5mode: {
-        enabled: true,
+        enabled: config.html5,
         requireBase: false
     },
     debug: true,
