@@ -75,7 +75,7 @@
   "dependencies": {},
   "jspm": {
     "directories": {
-      "lib": "src"
+      "packages": "app/libs"
     },
     "configFile": "system.config.js",
     "dependencies": {
