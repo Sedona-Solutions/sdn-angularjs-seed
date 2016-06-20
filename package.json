@@ -57,7 +57,8 @@
     "karma-jasmine": "^0.3.8",
     "karma-junit-reporter": "^0.4.2",
     "karma-phantomjs-launcher": "^1.0.0",
-    "karma-systemjs": "^0.13.0",
+    "karma-spec-reporter": "0.0.26",
+    "karma-systemjs": "^0.14.0",
     "less-plugin-clean-css": "^1.5.1",
     "ng-annotate": "^1.2.1",
     "object.assign": "^4.0.3",
@@ -77,7 +78,7 @@
     "directories": {
       "packages": "app/libs"
     },
-    "configFile": "system.config.js",
+    "configFile": "app/system.config.js",
     "dependencies": {
       "angular": "github:angular/bower-angular@^1.5.3",
       "angular-material": "github:angular/bower-material@^1.0.8",

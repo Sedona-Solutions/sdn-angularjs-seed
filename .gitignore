@@ -4,4 +4,5 @@ node_modules
 app/libs
 *.log
 *.back.*
-target
+/target
+

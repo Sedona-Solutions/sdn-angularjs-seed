@@ -3,8 +3,10 @@
 module.exports = function (config) {
     config.set({
 
+        logLevel : config.LOG_DEBUG,
+
         // base path that will be used to resolve all patterns (eg. files, exclude)
-        basePath: '.',
+        basePath: '..',
 
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
@@ -15,7 +17,8 @@ module.exports = function (config) {
             'karma-phantomjs-launcher',
             'karma-jasmine',
             'karma-junit-reporter',
-            'karma-coverage'
+            'karma-coverage',
+            'karma-spec-reporter'
         ],
 
         // start these browsers
@@ -30,7 +33,7 @@ module.exports = function (config) {
         // test results reporter to use
         // possible values: 'dots', 'progress'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ['progress', 'coverage'],
+        reporters: ['spec', 'coverage'],
 
         // Continuous Integration mode
         // if true, Karma captures browsers, runs the tests and exits
@@ -41,7 +44,7 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
-            'test/app/*.spec.js'
+            'test/unit/*.js'
         ],
 
         // list of files to exclude
@@ -49,32 +52,35 @@ module.exports = function (config) {
         ],
 
         systemjs: {
-            configFile: 'system.config.js',
+            configFile: 'app/system.config.js',
             config: {
                 transpiler: 'babel',
-                packages: 'jspm_packages',
                 paths: {
-                    "github:*": "/base/jspm_packages/github/*",
-                    "npm:*": "/base/jspm_packages/npm/*",
+                    "github:*": "/base/app/libs/github/*",
+                    "npm:*": "/base/app/libs/npm/*",
                     'es6-module-loader': 'node_modules/es6-module-loader/dist/es6-module-loader.js',
                     'systemjs': 'node_modules/systemjs/dist/system.js',
                     'system-polyfills': 'node_modules/systemjs/dist/system-polyfills.js',
                     'babel': 'node_modules/babel-core/lib/api/browser.js',
-                    'phantomjs-polyfill': 'node_modules/phantomjs-polyfill/bind-polyfill.js'
+                    'phantomjs-polyfill': 'node_modules/phantomjs-polyfill/bind-polyfill.js',
+                    "app/*": "target/tmp/src/*",
+                    "common/*": "target/tmp/src/common/*",
+                    "config/*": "target/tmp/config/*",
+                    "assets/*": "target/tmp/assets/*"
                 }
             },
 
             serveFiles: [
-                'jspm_packages/**/*',
-                'dist/**/*.js',
-                'dist/**/*.css',
-                'dist/**/*.json'
+                'app/libs/**/*',
+                'target/tmp/src/**/*.js',
+                'target/tmp/src/**/*.css',
+                'target/tmp/config/*.json'
             ]
         },
 
         proxies: {
             '/test': '/base/test',
-            '/dist': '/base/dist',
+            '/tmp': '/base/target/tmp',
             '/node_modules': '/base/node_modules'
         },
 
@@ -85,13 +91,13 @@ module.exports = function (config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            'src/!(*spec).js': ['coverage']
+            'app/src/*.js': ['coverage']
         },
 
         // optionally, configure the reporter
         coverageReporter: {
             type: 'html',
-            dir: 'coverage/',
+            dir: 'target/coverage/',
             instrumenters: {isparta: require('isparta')},
             instrumenter: {
                 '**/*.js': 'isparta'

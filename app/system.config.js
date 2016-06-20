@@ -14,6 +14,7 @@ System.config({
     buildCSS: true,
     separateCSS: false,
     // replace:bundles
+
     meta: {
         "github:angular/bower-angular@1.5.5/angular": {
             "format": "global",
