@@ -1,10 +1,10 @@
 import angular from 'angular';
-import 'angular-mocks';
-import AppComponent from 'app/app.component';
+import ngMock from 'angular-mocks';
+import 'app/app.component';
 
 describe('app component', () => {
 
-    beforeEach(module('sdnSeed'));
+    beforeEach(ngMock.module('sdnSeed'));
 
     let element, ctrl;
 

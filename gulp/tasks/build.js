@@ -40,7 +40,7 @@ gulp.task('es6', function () {
       sourceMap: true,
       gulpWarnings: false
     }))
-    .pipe(sourcemaps.write("/sourcemaps", { sourceRoot: '/src' }))
+    .pipe(sourcemaps.write("/sourcemaps", { sourceRoot: 'app' }))
     .pipe(gulp.dest(paths.output))
 });
 

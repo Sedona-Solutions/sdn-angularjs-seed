@@ -32,6 +32,19 @@ How To
 
 run `npm test` to launch unit tests
 
+##### Coverage reports
+
+`npm test` automatically generates html and json coverage reports in target/coverage.
+
+However, some mapping issues, due to BabelJS transpilation, still need to be fixed. Thereby, the previously mentioned reports are, for now, related to the ES5 transpiled JS code.
+Due to isparta deprecation and issues on it (douglasduteil/isparta#38), istanbul (gotwarlost/istanbul#429) and remap-istanbul (SitePen/remap-istanbul#1), there is still some work in progress on that case.
+
+Related issue : #5.
+
+##### EMFile issue
+
+The `npm test` script could, on some systems, run into a EMFILE error. We use rolaveric/karma-systemjs but you can look at Workiva/karma-jspm#97 for the description of a similar issue, and some resolutions.
+
 #### End to end
 
 run `npm run wd` to launch the webdriver server
@@ -54,6 +67,11 @@ This project is strongly bind to :
 * angularjs 1.5
 * babel.js
 * angular material (at a lower level)
+
+The following engines may be required in the OS for some uses :
+* istanbul
+* remap-istanbul
+* git
 
 ### Versions
 The project has been tested with the following environment:

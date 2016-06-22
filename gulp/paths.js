@@ -12,5 +12,9 @@ module.exports = {
     release: 'target/dist/**/*',
     releaseFolder: 'target/dist/', 
     jspm: ['./app/libs/**/*.{js,js.map,css}','!./app/libs/**/*.{gzip,md,json}'],
-    systemConfig:  'app/system.config.js'
+    systemConfig:  'app/system.config.js',
+    coverage: 'target/coverage',
+    target: 'target',
+    genCss: 'app/src/**/*.css',
+    genTpl: 'app/src/**/*.tpl.js'
 };

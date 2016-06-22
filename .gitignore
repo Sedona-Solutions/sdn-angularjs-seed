@@ -5,4 +5,5 @@ app/libs
 *.log
 *.back.*
 /target
+/app/**/*.tpl.js
 
