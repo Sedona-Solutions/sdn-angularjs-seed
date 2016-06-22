@@ -7,7 +7,7 @@ gulp.task('serve', ['watch'], function (done) {
     open: false,
     port: 9000,
     server: {
-      baseDir: ['./'],
+      baseDir: ['target/tmp/'],
       middleware: [ historyApiFallback() ]
     }
   }, done);
@@ -18,7 +18,7 @@ gulp.task('serve:prod', ['release'], function (done) {
         open: false,
         port: 9001,
         server: {
-            baseDir: ['prod/']
+            baseDir: ['target/dist/']
         }
     }, done);
 });

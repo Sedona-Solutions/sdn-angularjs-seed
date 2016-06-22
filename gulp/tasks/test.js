@@ -5,7 +5,7 @@ var paths = require('../paths');
 
 gulp.task('test', ['build'], function(done) {
   new karma.Server({
-    configFile: __dirname + '/../../karma.conf.js',
+    configFile: __dirname + '/../../test/karma.conf.js',
     singleRun: true
   }, (exitCode) => {
         console.log(exitCode);
@@ -16,7 +16,7 @@ gulp.task('test', ['build'], function(done) {
 gulp.task('sauce-test', function(done) {
   gulp.src(paths.tests)
   .pipe((gulp_protractor.protractor({
-    configFile: __dirname + '/../../protractor.conf.js'
+    configFile: __dirname + '/../../test/protractor.conf.js'
   }))
   .on('error', function (e) { throw e; })
   .on('end', done));

@@ -11,9 +11,17 @@ gulp.task('move', function () {
     './src/**/*.ico',
     './src/**/*.jpg',
     './src/**/*.gif',
-    './src/**/*.eot'
+    './src/**/*.eot',
+    './app/index.html',
+    './app/system.config.js'
   ];
 
+    gulp.src('./app/libs/**/*')
+    .pipe(gulp.dest(`${paths.output}libs`));
+
+    gulp.src('./app/config/*')
+    .pipe(gulp.dest(`${paths.output}config`));
+    
   return gulp.src(srcPaths)
     .pipe(gulp.dest(paths.output))
 });

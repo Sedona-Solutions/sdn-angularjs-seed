@@ -31,7 +31,7 @@ gulp.task('build', function (callback) {
 
 
 gulp.task('es6', function () {
-  return gulp.src(paths.source, { base: 'src' })
+  return gulp.src(paths.source, { base: 'app' })
     .pipe(plumber())
     .pipe(changed(paths.output, { extension: '.js' }))
     .pipe(sourcemaps.init({ loadMaps: true }))
@@ -40,12 +40,12 @@ gulp.task('es6', function () {
       sourceMap: true,
       gulpWarnings: false
     }))
-    .pipe(sourcemaps.write("/sourcemaps", { sourceRoot: '/src' }))
+    .pipe(sourcemaps.write("/sourcemaps", { sourceRoot: 'app' }))
     .pipe(gulp.dest(paths.output))
 });
 
 gulp.task('html', function () {
-  return gulp.src(paths.templates)
+ return gulp.src(paths.templates)
     .pipe(plumber())
     .pipe(changed(paths.output, { extension: '.html' }))
     .pipe(htmlMin({
@@ -78,5 +78,5 @@ gulp.task('less', function () {
 
 gulp.task('dist:jspm', function() {
     return gulp.src(paths.jspm)
-        .pipe(gulp.dest('dist/jspm_packages'));
+        .pipe(gulp.dest('target/tmp/libs'));
 });

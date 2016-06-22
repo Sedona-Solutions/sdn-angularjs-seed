@@ -1,24 +1,21 @@
 System.config({
     defaultJSExtensions: true,
+    transpiler: false,
     paths: {
-        "systemjs-test/*": "src/*",
-        // replace:next:"app/*": "app/*",
-        "app/*": "dist/app/*",
-        // replace:next:"config/*": "config/*",
-        "config/*": "dist/config/*",
-        // replace:next:"common/*": "common/*",
-        "common/*": "dist/common/*",
-        // replace:next:"assets/*": "assets/*",
-        "assets/*": "dist/assets/*",
+        "systemjs-test/*": "./*",
+        "app/*": "src/*",
+        "config/*": "config/*",
+        "common/*": "src/common/*",
+        "assets/*": "assets/*",
         "bundles/*": "bundles/*",
-        "lib/*": "lib/*",
-        "github:*": "jspm_packages/github/*",
-        "npm:*": "jspm_packages/npm/*",
-        "jspm_packages/*": "jspm_packages/*"
+        "github:*": "app/libs/github/*",
+        "npm:*": "app/libs/npm/*",
+        "jspm_packages/*": "libs/*"
     },
     buildCSS: true,
     separateCSS: false,
     // replace:bundles
+
     meta: {
         "github:angular/bower-angular@1.5.5/angular": {
             "format": "global",
