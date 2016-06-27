@@ -8,8 +8,8 @@ System.config({
         "common/*": "src/common/*",
         "assets/*": "assets/*",
         "bundles/*": "bundles/*",
-        "github:*": "app/libs/github/*",
-        "npm:*": "app/libs/npm/*",
+        "github:*": "libs/github/*",
+        "npm:*": "libs/npm/*",
         "jspm_packages/*": "libs/*"
     },
     buildCSS: true,

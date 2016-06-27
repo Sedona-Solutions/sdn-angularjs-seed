@@ -10,15 +10,16 @@ var htmlMin = require('gulp-minify-html');
 var ngHtml2Js = require("gulp-ng-html2js");
 var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
-var vfs = require('vinyl-fs');
 
 var paths = require('../paths');
-var compilerOptions = require('../babelOptions');
+
+var fs = require('fs');
+var compilerOptions = JSON.parse(fs.readFileSync('.babelrc'));
 
 var cleancss = new lessPluginCleanCSS({
-  advanced: true,
-  keepSpecialComments: 0,
-  keepBreaks: false
+    advanced: true,
+    keepSpecialComments: 0,
+    keepBreaks: false
 });
 
 gulp.task('build', function (callback) {
@@ -31,52 +32,47 @@ gulp.task('build', function (callback) {
 
 
 gulp.task('es6', function () {
-  return gulp.src(paths.source, { base: 'app' })
-    .pipe(plumber())
-    .pipe(changed(paths.output, { extension: '.js' }))
-    .pipe(sourcemaps.init({ loadMaps: true }))
-    .pipe(babel(compilerOptions))
-    .pipe(ngAnnotate({
-      sourceMap: true,
-      gulpWarnings: false
-    }))
-    .pipe(sourcemaps.write("/sourcemaps", { sourceRoot: 'app' }))
-    .pipe(gulp.dest(paths.output))
+    return gulp.src(paths.source, {base: 'app'})
+        .pipe(plumber())
+        .pipe(changed(paths.output, {extension: '.js'}))
+        .pipe(sourcemaps.init())
+        .pipe(babel(compilerOptions))
+        .pipe(ngAnnotate({
+            sourceMap: true,
+            gulpWarnings: false
+        }))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest(paths.output))
 });
 
 gulp.task('html', function () {
- return gulp.src(paths.templates)
-    .pipe(plumber())
-    .pipe(changed(paths.output, { extension: '.html' }))
-    .pipe(htmlMin({
-      empty: true,
-      spare: true,
-      quotes: true
-    }))
-    .pipe(ngHtml2Js({
-      template: "import angular from 'angular';\n" +
-        "export default angular.module('<%= moduleName %>', []).run(['$templateCache', function($templateCache) {\n" +
-        "   $templateCache.put('<%= template.url %>',\n    '<%= template.prettyEscapedContent %>');\n" +
-        "}]);\n"
-    }))
-    .pipe(babel(compilerOptions))
-    .pipe(gulp.dest(paths.output))
+    return gulp.src(paths.templates)
+        .pipe(plumber())
+        .pipe(changed(paths.output, {extension: '.html'}))
+        .pipe(htmlMin({
+            empty: true,
+            spare: true,
+            quotes: true
+        }))
+        .pipe(ngHtml2Js({
+            template: "import angular from 'angular';\n" +
+            "export default angular.module('<%= moduleName %>', []).run(['$templateCache', function($templateCache) {\n" +
+            "   $templateCache.put('<%= template.url %>',\n    '<%= template.prettyEscapedContent %>');\n" +
+            "}]);\n"
+        }))
+        .pipe(babel(compilerOptions))
+        .pipe(gulp.dest(paths.output))
 });
 
 gulp.task('less', function () {
-  return gulp.src(paths.less)
-    .pipe(plumber())
-    .pipe(changed(paths.output, {extension: '.css'}))
-    .pipe(sourcemaps.init())
-    .pipe(less({
-      plugins: [ cleancss ]
-    }))
-    .pipe(sourcemaps.write("."))
-    .pipe(gulp.dest(paths.output))
-    .pipe(browserSync.reload({ stream: true }));
-});
-
-gulp.task('dist:jspm', function() {
-    return gulp.src(paths.jspm)
-        .pipe(gulp.dest('target/tmp/libs'));
+    return gulp.src(paths.less)
+        .pipe(plumber())
+        .pipe(changed(paths.output, {extension: '.css'}))
+        .pipe(sourcemaps.init())
+        .pipe(less({
+            plugins: [cleancss]
+        }))
+        .pipe(sourcemaps.write("."))
+        .pipe(gulp.dest(paths.output))
+        .pipe(browserSync.reload({stream: true}));
 });
