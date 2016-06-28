@@ -1,11 +1,10 @@
-import angular from 'angular';
 import { Injectable } from 'decorators/Injectable';
 
 @Injectable()
 export class MessageService {
 
     /* @ngInject */
-    constructor(){
+    constructor() {
     }
 
     get message() {

@@ -1,4 +1,3 @@
-import angular from 'angular';
 import { modalModule } from 'common/core';
 import popupModule from 'common/components/popup';
 import timeModule from 'common/components/time';
@@ -21,8 +20,8 @@ import { Component } from 'decorators/Component';
 export class DashboardComponent {
 
     /* @ngInject */
-    constructor($scope) {
-        console.log('dashboard!');
+    constructor($log) {
+        $log.debug('dashboard!');
     }
 
 }

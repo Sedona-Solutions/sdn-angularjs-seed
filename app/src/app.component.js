@@ -1,6 +1,5 @@
 import 'babel/external-helpers';
 
-import angular from 'angular';
 import 'angular-ui-router';
 import 'ui-router-extras';
 import 'ocLazyLoad';
@@ -15,7 +14,6 @@ import 'app/app.component.css!';
 
 import { Module } from 'decorators/Module';
 import { Component } from 'decorators/Component';
-import { lazyLoadConfig } from 'decorators/utils/routes';
 import { Routes } from 'decorators/Routes';
 import { DashboardComponent } from 'app/dashboards/dashboards.component';
 
@@ -27,10 +25,10 @@ import * as Config from 'app/app.config';
 import * as MaterialUtil from 'common/MaterialUtil';
 
 @Routes([
-    {name: 'admin', path: '/admin', lazy: true, component: 'app/admin/admin.component'},
-    {name: 'dashboards', path: '/dashboards', component: DashboardComponent},
-    {name: 'forms', path: '/forms', lazy: true, component: 'app/demo-forms/demo-forms.component'},
-    {path: '/', component: HomeComponent, useAsDefault: true}
+    { name: 'admin', path: '/admin', lazy: true, component: 'app/admin/admin.component' },
+    { name: 'dashboards', path: '/dashboards', component: DashboardComponent },
+    { name: 'forms', path: '/forms', lazy: true, component: 'app/demo-forms/demo-forms.component' },
+    { path: '/', component: HomeComponent, useAsDefault: true }
 ])
 @Module({
     name: 'sdnSeed',

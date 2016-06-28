@@ -1,4 +1,4 @@
-import {Component} from 'decorators/Component';
+import { Component } from 'decorators/Component';
 
 import template from 'app/layout/home.component.tpl';
 

@@ -1,6 +1,3 @@
-import angular from 'angular';
-
-import { Module } from 'decorators/Module';
 import { Component } from 'decorators/Component';
 
 import template from 'app/admin/builder.component.tpl';
@@ -11,9 +8,9 @@ import template from 'app/admin/builder.component.tpl';
 })
 export class BuilderComponent {
 
-    /*@ngInject*/
-    constructor($scope) {
-        console.log('builder!')
+    /* @ngInject */
+    constructor($log) {
+        $log.debug('builder!');
     }
 
 }

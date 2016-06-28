@@ -10,15 +10,15 @@ import 'app/admin/admin.component.css!';
 import template from 'app/admin/admin.component.tpl';
 
 @Routes([
-    {name: 'admin.builder', path: '/builder', component: BuilderComponent},
-    {name: 'admin.users', path: '/users', component: UsersComponent}
+    { name: 'admin.builder', path: '/builder', component: BuilderComponent },
+    { name: 'admin.users', path: '/users', component: UsersComponent }
 ])
 @Module({
     name: 'admin'
 })
 @Component({
     selector: 'admin',
-    templateUrl : template.name,
+    templateUrl: template.name,
     directives: [
         BuilderComponent,
         UsersComponent
@@ -30,8 +30,8 @@ import template from 'app/admin/admin.component.tpl';
 export class AdminComponent {
 
     /* @ngInject */
-    constructor(messageService) {
-        console.log('admin!');
+    constructor($log, messageService) {
+        $log.debug('admin!');
         this.messageService = messageService;
     }
 
