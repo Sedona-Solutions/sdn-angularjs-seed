@@ -27,6 +27,9 @@
     "boss"          : true,
     "debug"         : true,
     "eqnull"        : true,
+    "ignoreDelimiters": [
+      { "start": "start-non-standard", "end": "end-non-standard" }
+    ],
     "esnext"        : true,
     "evil"          : true,
     "expr"          : true,

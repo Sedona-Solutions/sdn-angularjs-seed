@@ -13,6 +13,7 @@ import template from 'app/demo-forms/demo-forms.component.tpl';
     selector: 'demo-forms',
     templateUrl: template.name
 })
+
 export class DemoFormsComponent {
 
     /* @ngInject */

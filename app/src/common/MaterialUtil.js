@@ -4,7 +4,7 @@ export let  buildToggler = ($mdSidenav, $log, navID) => {
         $mdSidenav(navID)
             .toggle()
             .then(function () {
-                $log.debug("toggle " + navID + " is done");
+                $log.debug('toggle ' + navID + ' is done');
             });
-    }
+    };
 };

@@ -27,6 +27,7 @@ import template from 'app/admin/admin.component.tpl';
         MessageService
     ]
 })
+
 export class AdminComponent {
 
     /* @ngInject */

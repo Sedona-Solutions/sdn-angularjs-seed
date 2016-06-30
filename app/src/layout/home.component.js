@@ -6,6 +6,7 @@ import template from 'app/layout/home.component.tpl';
     selector: 'home',
     templateUrl: template.name
 })
+
 export class HomeComponent {
 
     /* @ngInject */

@@ -1,4 +1,3 @@
-import angular from 'angular';
 import { modalModule } from 'common/core';
 import popupModule from 'common/components/popup';
 import timeModule from 'common/components/time';
@@ -18,6 +17,7 @@ import { Component } from 'decorators/Component';
     selector: 'dashboards',
     templateUrl: template.name
 })
+
 export class DashboardComponent {
 
     /* @ngInject */

@@ -59,6 +59,7 @@ import * as MaterialUtil from 'common/MaterialUtil';
         HomeComponent
     ]
 })
+
 export class AppComponent {
 
     /* @ngInject */

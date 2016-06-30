@@ -1,6 +1,3 @@
-import angular from 'angular';
-
-import { Module } from 'decorators/Module';
 import { Component } from 'decorators/Component';
 
 import template from 'app/admin/builder.component.tpl';

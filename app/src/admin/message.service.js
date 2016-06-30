@@ -1,7 +1,8 @@
-import angular from 'angular';
 import { Injectable } from 'decorators/Injectable';
 
+// start-non-standard
 @Injectable()
+// end-non-standard
 export class MessageService {
 
     /* @ngInject */
