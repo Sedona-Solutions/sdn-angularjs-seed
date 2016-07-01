@@ -1,7 +1,7 @@
 import angular from 'angular';
 
-import { Module } from 'decorators/Module';
-import { Component } from 'decorators/Component';
+import { Module } from 'ng-transition/ng1';
+import { Component } from 'ng-transition/core';
 
 import template from 'app/admin/builder.component.tpl';
 
