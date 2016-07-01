@@ -1,6 +1,6 @@
-import { Component } from 'decorators/Component';
-import { Module } from 'decorators/Module';
-import { Routes } from 'decorators/Routes';
+import { Component } from 'ng-transition/core';
+import { Module } from 'ng-transition/ng1';
+import { Routes } from 'ng-transition/router';
 
 import { BuilderComponent } from 'app/admin/builder.component';
 import { UsersComponent } from 'app/admin/users.component';

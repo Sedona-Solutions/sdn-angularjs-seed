@@ -1,4 +1,4 @@
-import { Injectable } from 'decorators/Injectable';
+import { Injectable } from 'ng-transition/core';
 
 // start-non-standard
 @Injectable()

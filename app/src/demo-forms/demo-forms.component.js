@@ -1,6 +1,6 @@
 import modalModule from 'common/components/modal';
-import { Module } from 'decorators/Module';
-import { Component } from 'decorators/Component';
+import { Module } from 'ng-transition/ng1';
+import { Component } from 'ng-transition/core';
 import template from 'app/demo-forms/demo-forms.component.tpl';
 
 @Module({

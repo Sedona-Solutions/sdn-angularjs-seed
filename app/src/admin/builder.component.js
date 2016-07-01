@@ -1,4 +1,4 @@
-import { Component } from 'decorators/Component';
+import { Component } from 'ng-transition/core';
 
 import template from 'app/admin/builder.component.tpl';
 
