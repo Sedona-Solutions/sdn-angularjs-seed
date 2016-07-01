@@ -1,6 +1,6 @@
 import angular from 'angular';
-import { Component } from 'decorators/Component';
-import { Module } from 'decorators/Module';
+import { Component } from 'ng-transition/core';
+import { Module } from 'ng-transition/ng1';
 
 import template from 'app/admin/users.component.tpl';
 

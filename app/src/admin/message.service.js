@@ -1,5 +1,5 @@
 import angular from 'angular';
-import { Injectable } from 'decorators/Injectable';
+import { Injectable } from 'ng-transition/core';
 
 @Injectable()
 export class MessageService {
