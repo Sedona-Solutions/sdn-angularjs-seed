@@ -1,6 +1,17 @@
 Sedona angularjs seed
 ================================
 
+**This alternative is no longer maintained.**
+-----------------------
+
+**The "jshint" alternative isn't meant to be maintaned as a real alternative, given the fact that it only support ES features
+above stage-2, and that Decorators are currently at stage-1.**
+
+**Furthermore, eslint has a far better documentation and plugins, and
+permit to have "sharable configurations".**
+
+We only keep this branch to show how eslint is better ;)
+
 Current state
 -------------------
 
