@@ -28,12 +28,12 @@ gulp.task('release', function (callback) {
 });
 
 gulp.task('bundle', function (callback) {
-    var directories = getDirectories('dist/app');
+    var directories = getDirectories('target/tmp/src');
     var modulesBuilder = new Builder('./', paths.systemConfig);
     var toExcludeFromMain = directories.map((moduleName) => {
-        return `prod/app/${moduleName}.js`
+        return `../target/dist/app/${moduleName}.js`
     });
-    toExcludeFromMain.push('prod/config/*');
+    toExcludeFromMain.push('../target/dist/app/config/*');
     toExcludeFromMain = toExcludeFromMain.join(' - ');
     directories.forEach((moduleName) => {
         bundles[`app/${moduleName}.js`] = [`app/${moduleName}/*`];
@@ -42,13 +42,16 @@ gulp.task('bundle', function (callback) {
 
     modulesBuilder.config({
         meta: {
-            'jspm_packages/*': {build: false},
-            'common/*': {build: false}
+            'libs/*': { build: false },
+            'common/*': { build: false }
         },
         paths: {
-            "app/*": "dist/app/*",
-            "common/*": "dist/common/*",
-            "assets/*": "dist/assets/*"
+            "app/*": "target/tmp/src/*",
+            "common/*": "target/tmp/src/common/*",
+            "assets/*": "target/tmp/assets/*",
+            "libs/*": "app/libs/*",
+            "github:*": "app/libs/github/*",
+            "npm:*": "app/libs/npm/*"
         }
     });
 
@@ -56,7 +59,7 @@ gulp.task('bundle', function (callback) {
         var pathToDir = 'app/' + moduleName + '/';
         var moduleFile = pathToDir + moduleName + '.component.js';
 
-        return modulesBuilder.bundle(moduleFile, 'prod/app/' + moduleName + '.js', {minify: true, sourcemap: true})
+        return modulesBuilder.bundle(moduleFile, 'target/dist/app/' + moduleName + '.js', { minify: true, sourcemap: true })
             .then(function () {
                 console.log(`${moduleName} build complete`);
             })
@@ -85,10 +88,22 @@ gulp.task('bundle', function (callback) {
 
     var dependenciesBuilder = new Builder('./', paths.systemConfig);
 
+    dependenciesBuilder.config({
+        paths: {
+            "systemjs-test/*": "app/*",
+            "app/*": "target/tmp/src/*",
+            "common/*": "target/tmp/src/common/*",
+            "libs/*": "app/libs/*",
+            "github:*": "app/libs/github/*",
+            "npm:*": "app/libs/npm/*",
+            "config/*": "app/config/*"
+        }
+    });
+
     modulesPromises.push(
         dependenciesBuilder.bundle(
             'app/main - app/**/* - common/**/*',
-            'prod/bundled_packages/all.js',
+            'target/dist/bundled_packages/all.js',
             {
                 minify: true,
                 sourcemap: true
@@ -96,6 +111,11 @@ gulp.task('bundle', function (callback) {
         ).then(() => {
             bundles['bundled_packages/all.js'] = ['angular', 'babel/*'];
         })
+            .catch(function (err) {
+                console.log('error during bundling');
+                console.log(err);
+                callback();
+            })
     );
 
     Promise.all(modulesPromises).then(() => {
@@ -108,19 +128,22 @@ gulp.task('bundle', function (callback) {
                 */
             },
             paths: {
-                "app/*": "dist/app/*",
-                "common/*": "dist/common/*",
-                "assets/*": "dist/assets/*"
+                "app/*": "target/tmp/src/*",
+                "common/*": "target/tmp/src/common/*",
+                "assets/*": "target/tmp/assets/*",
+                "libs/*": "app/libs/*",
+                "github:*": "app/libs/github/*",
+                "npm:*": "app/libs/npm/*"
             },
             bundles
         });
 
-        mainBuilder.bundle(`app/main.js - ${toExcludeFromMain}`, 'prod/app/main.js', {
-                minify: true,
-                sourcemap: true,
-                /*runtime: false,
-                 format: 'amd'*/
-            })
+        mainBuilder.bundle(`app/main.js - ${toExcludeFromMain}`, 'target/dist/app/main.js', {
+            minify: true,
+            sourcemap: true,
+            /*runtime: false,
+             format: 'amd'*/
+        })
             .then(function () {
                 console.log('main module build complete');
 
@@ -130,7 +153,7 @@ gulp.task('bundle', function (callback) {
                     .pipe(replace(/(\/\/ replace:next:)(.*)([\n\r])(.*)/g, '$2'))
                     // this replace need to be repeated until there is no match anymore
                     //.pipe(replace(/(\/\/ replace:dist[\s\S]*)(dist\/)([\s\S]*\/\/ endreplace:dist)/g, '$1$3'))
-                    .pipe(gulp.dest('prod/'));
+                    .pipe(gulp.dest('target/dist/'));
 
                 callback();
 
@@ -147,13 +170,13 @@ gulp.task('bundle', function (callback) {
 gulp.task('index-process', function () {
     gulp.src(paths.index)
         .pipe(processhtml())
-        .pipe(gulp.dest('prod/'));
+        .pipe(gulp.dest('target/dist/'));
 });
 
 gulp.task('prod:dependencies', function () {
     gulp.src(paths.jspm)
-        .pipe(gulp.dest('prod/jspm_packages/'));
+        .pipe(gulp.dest('target/dist/app/libs'));
 
     gulp.src(paths.config)
-        .pipe(gulp.dest('prod/config/'));
+        .pipe(gulp.dest('target/dist/app/config/'));
 });
