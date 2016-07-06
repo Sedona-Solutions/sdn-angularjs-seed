@@ -31,9 +31,9 @@ gulp.task('bundle', function (callback) {
     var directories = getDirectories('target/tmp/src');
     var modulesBuilder = new Builder('./', paths.systemConfig);
     var toExcludeFromMain = directories.map((moduleName) => {
-        return `../target/dist/app/${moduleName}.js`
+        return `target/dist/app/${moduleName}.js`
     });
-    toExcludeFromMain.push('../target/dist/app/config/*');
+    toExcludeFromMain.push('target/dist/app/config/*');
     toExcludeFromMain = toExcludeFromMain.join(' - ');
     directories.forEach((moduleName) => {
         bundles[`app/${moduleName}.js`] = [`app/${moduleName}/*`];
@@ -133,7 +133,8 @@ gulp.task('bundle', function (callback) {
                 "assets/*": "target/tmp/assets/*",
                 "libs/*": "app/libs/*",
                 "github:*": "app/libs/github/*",
-                "npm:*": "app/libs/npm/*"
+                "npm:*": "app/libs/npm/*",
+                "config/*": "app/config/*"
             },
             bundles
         });
