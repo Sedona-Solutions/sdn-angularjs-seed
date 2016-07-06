@@ -126,6 +126,7 @@
     "e2e": "gulp sauce-test",
     "lint": "gulp lint",
     "release": "gulp release",
-    "remap-coverage": "remap-istanbul -i target/coverage/coverage-final.json -o target/coverage/remap/remap.json -b ./ && istanbul report --root target/coverage/remap --dir target/coverage/remap/rslt html"
+    "remap-coverage": "remap-istanbul -i target/coverage/coverage-final.json -o target/coverage/remap/remap.json -b ./ && istanbul report --root target/coverage/remap --dir target/coverage/remap/rslt html",
+    "changelog": "github_changelog_generator --no-unreleased --no-author"
   }
 }
