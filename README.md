@@ -21,7 +21,28 @@ Remaining steps are :
 How To
 -------------
 
-### Install & Run
+### Start a new project from this seed
+
+To start a new project from this seed, follow the following steps :
+
+1. clone the desired [release](https://github.com/Sedona-Solutions/sdn-angularjs-seed/releases)
+    ```
+    git clone --branch=<release> --depth=1 -o sdn-angular-seed \
+        https://github.com/Sedona-Solutions/sdn-angularjs-seed.git <appFolder>
+    ```
+    See the CHANGELOG.md file for more informations about release.
+
+    Use "master" instead of the release number if you want to start from the last commit (*at your own risks*).
+
+2. cd to the <appFodler> folder and run ``npm install``
+
+3. change the project's data in the package.json file
+
+4. change the app title in app/index.html and the app name in app/app.component.js > @Module > name.
+
+5. remove all the README content
+
+### Start browserSync server
 
 1. `npm start`
 2. Browse to `http://localhost:9000`
