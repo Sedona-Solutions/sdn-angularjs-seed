@@ -3,7 +3,7 @@
 ## [1.0.0-beta.1](https://github.com/Sedona-Solutions/sdn-angularjs-seed/tree/1.0.0-beta.1) (2016-07-01)
 
 *This release is not a stable one, nor a real "beta" as usually intended.
-It is created for planning and tests purposes only.*
+It is created for planning and test purposes only.*
 
 [Full Changelog](https://github.com/Sedona-Solutions/sdn-angularjs-seed/compare/0.1.0...1.0.0-beta.1)
 
