@@ -10,6 +10,17 @@ var replace = require('gulp-replace');
 
 var bundles = {};
 
+var pathObj = {
+    "systemjs-test/*": "app/*",
+    "app/*": "target/tmp/src/*",
+    "common/*": "target/tmp/src/common/*",
+    "jspm_packages": "app/libs/*",
+    "libs": "app/libs/*",
+    "github:*": "app/libs/github/*",
+    "npm:*": "app/libs/npm/*",
+    "config/*": "app/config/*"
+};
+
 function getDirectories(srcpath) {
     return fs.readdirSync(srcpath).filter(function (file) {
         return fs.statSync(path.join(srcpath, file)).isDirectory() && file != 'layout';
@@ -21,6 +32,7 @@ gulp.task('release', function (callback) {
         'clean',
         'build',
         'prod:dependencies',
+        'replace:system',
         'bundle',
         'index-process',
         callback
@@ -28,12 +40,12 @@ gulp.task('release', function (callback) {
 });
 
 gulp.task('bundle', function (callback) {
-    var directories = getDirectories('dist/app');
+    var directories = getDirectories('target/tmp/src');
     var modulesBuilder = new Builder('./', paths.systemConfig);
     var toExcludeFromMain = directories.map((moduleName) => {
-        return `prod/app/${moduleName}.js`
+        return `target/dist/app/${moduleName}.js`
     });
-    toExcludeFromMain.push('prod/config/*');
+    toExcludeFromMain.push('target/dist/app/config/*');
     toExcludeFromMain = toExcludeFromMain.join(' - ');
     directories.forEach((moduleName) => {
         bundles[`app/${moduleName}.js`] = [`app/${moduleName}/*`];
@@ -42,21 +54,17 @@ gulp.task('bundle', function (callback) {
 
     modulesBuilder.config({
         meta: {
-            'jspm_packages/*': {build: false},
-            'common/*': {build: false}
+            'libs/*': { build: false },
+            'common/*': { build: false }
         },
-        paths: {
-            "app/*": "dist/app/*",
-            "common/*": "dist/common/*",
-            "assets/*": "dist/assets/*"
-        }
+        paths: pathObj
     });
 
     var modulesPromises = directories.map((moduleName) => {
         var pathToDir = 'app/' + moduleName + '/';
         var moduleFile = pathToDir + moduleName + '.component.js';
 
-        return modulesBuilder.bundle(moduleFile, 'prod/app/' + moduleName + '.js', {minify: true, sourcemap: true})
+        return modulesBuilder.bundle(moduleFile, 'target/dist/app/' + moduleName + '.js', { minify: true, sourcemap: true })
             .then(function () {
                 console.log(`${moduleName} build complete`);
             })
@@ -83,23 +91,34 @@ gulp.task('bundle', function (callback) {
     );
     */
 
+    /* // packages bundle - uncomment if you nees a dependencies bundle
     var dependenciesBuilder = new Builder('./', paths.systemConfig);
+
+    dependenciesBuilder.config({
+        paths: pathObj
+    });
 
     modulesPromises.push(
         dependenciesBuilder.bundle(
-            'app/main - app/**/* - common/**/*',
-            'prod/bundled_packages/all.js',
+            'app/main - app/!**!/!* - common/!**!/!*',
+            'target/dist/bundled_packages/all.js',
             {
                 minify: true,
                 sourcemap: true
             }
         ).then(() => {
-            bundles['bundled_packages/all.js'] = ['angular', 'babel/*'];
+            bundles['bundled_packages/all.js'] = ['angular', 'babel/!*'];
         })
-    );
+            .catch(function (err) {
+                console.log('error during bundling');
+                console.log(err);
+                callback();
+            })
+    );*/
 
     Promise.all(modulesPromises).then(() => {
-        var mainBuilder = new Builder('./', paths.systemConfig);
+
+        var mainBuilder = new Builder('./', 'target/dist/app/system.config.js');
 
         mainBuilder.config({
             meta: {
@@ -107,30 +126,26 @@ gulp.task('bundle', function (callback) {
                 'jspm_packages/!*': {build: false}
                 */
             },
-            paths: {
-                "app/*": "dist/app/*",
-                "common/*": "dist/common/*",
-                "assets/*": "dist/assets/*"
-            },
+            paths: pathObj,
             bundles
         });
 
-        mainBuilder.bundle(`app/main.js - ${toExcludeFromMain}`, 'prod/app/main.js', {
-                minify: true,
-                sourcemap: true,
-                /*runtime: false,
-                 format: 'amd'*/
-            })
+        mainBuilder.bundle(`app/main.js - ${toExcludeFromMain}`, 'target/dist/app/main.js', {
+            minify: true,
+            sourcemap: true
+        })
             .then(function () {
                 console.log('main module build complete');
 
-                gulp.src(paths.systemConfig)
+                gulp.src('target/dist/app/system.config.js')
+                    .pipe(replace('app/libs/', 'libs/'))
+                    .pipe(replace('"app/*": "src/*",', '"app/*": "./*",'))
                     .pipe(replace('// replace:bundles', 'bundles: ' + JSON.stringify(bundles) + ','))
                     // TODO : this is a temporary solution - see next commented pipe for the idea
                     .pipe(replace(/(\/\/ replace:next:)(.*)([\n\r])(.*)/g, '$2'))
                     // this replace need to be repeated until there is no match anymore
                     //.pipe(replace(/(\/\/ replace:dist[\s\S]*)(dist\/)([\s\S]*\/\/ endreplace:dist)/g, '$1$3'))
-                    .pipe(gulp.dest('prod/'));
+                    .pipe(gulp.dest('target/dist/app/'));
 
                 callback();
 
@@ -147,13 +162,19 @@ gulp.task('bundle', function (callback) {
 gulp.task('index-process', function () {
     gulp.src(paths.index)
         .pipe(processhtml())
-        .pipe(gulp.dest('prod/'));
+        .pipe(gulp.dest('target/dist/app/'));
 });
 
 gulp.task('prod:dependencies', function () {
     gulp.src(paths.jspm)
-        .pipe(gulp.dest('prod/jspm_packages/'));
+        .pipe(gulp.dest('target/dist/app/libs'));
 
     gulp.src(paths.config)
-        .pipe(gulp.dest('prod/config/'));
+        .pipe(gulp.dest('target/dist/app/config/'));
+});
+
+gulp.task('replace:system', function () {
+    gulp.src(paths.systemConfig)
+        .pipe(replace('libs/', 'app/libs/'))
+        .pipe(gulp.dest('target/dist/app'));
 });

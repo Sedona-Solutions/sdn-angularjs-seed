@@ -12,9 +12,10 @@ import * as config from 'config/config.json!';
 
 import 'app/app.component.css!';
 
-import { Module } from 'decorators/Module';
-import { Component } from 'decorators/Component';
-import { Routes } from 'decorators/Routes';
+import { Module } from 'ng-transition/ng1';
+import { Component } from 'ng-transition/core';
+import { Routes } from 'ng-transition/router';
+
 import { DashboardComponent } from 'app/dashboards/dashboards.component';
 
 import { HomeComponent } from 'app/layout/home.component';

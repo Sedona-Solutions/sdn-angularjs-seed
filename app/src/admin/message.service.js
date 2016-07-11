@@ -1,6 +1,6 @@
-import { Injectable } from 'decorators/Injectable';
+import { Injectable } from 'ng-transition/core';
 
-@Injectable()
+@Injectable({ id: 'messageService' })
 export class MessageService {
 
     /* @ngInject */
