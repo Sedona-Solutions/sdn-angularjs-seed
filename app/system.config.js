@@ -14,6 +14,7 @@ System.config({
   },
   buildCSS: true,
   separateCSS: false,
+  // replace:bundles
 
   meta: {
     "github:angular/bower-angular@1.5.5/angular": {
@@ -57,6 +58,8 @@ System.config({
 
   map: {
     "angular": "github:angular/bower-angular@1.5.5",
+    "angular-animate": "github:angular/bower-angular-animate@1.5.5",
+    "angular-aria": "github:angular/bower-angular-aria@1.5.5",
     "angular-material": "github:angular/bower-material@1.0.8",
     "angular-mocks": "github:angular/bower-angular-mocks@1.5.5",
     "angular-ui-router": "github:angular-ui/ui-router@0.2.18",
@@ -67,7 +70,7 @@ System.config({
     "css": "github:systemjs/plugin-css@0.1.21",
     "json": "github:systemjs/plugin-json@0.1.2",
     "lodash": "github:lodash/lodash@3.10.1",
-    "ng-transition": "github:Sedona-Solutions/angular-transition-sugar@0.4.0",
+    "ng-transition": "github:Sedona-Solutions/angular-transition-sugar@0.4.1",
     "ocLazyLoad": "github:ocombe/oclazyload@1.0.9",
     "restangular": "github:mgonto/restangular@1.5.2",
     "systemjs/plugin-css": "github:systemjs/plugin-css@0.1.21",
@@ -91,7 +94,7 @@ System.config({
       "css": "github:systemjs/plugin-css@0.1.21"
     },
     "github:jspm/nodelibs-assert@0.1.0": {
-      "assert": "npm:assert@1.4.0"
+      "assert": "npm:assert@1.4.1"
     },
     "github:jspm/nodelibs-buffer@0.1.0": {
       "buffer": "npm:buffer@3.6.0"
@@ -117,7 +120,7 @@ System.config({
       "path-browserify": "npm:path-browserify@0.0.0"
     },
     "github:jspm/nodelibs-process@0.1.2": {
-      "process": "npm:process@0.11.3"
+      "process": "npm:process@0.11.5"
     },
     "github:jspm/nodelibs-stream@0.1.0": {
       "stream-browserify": "npm:stream-browserify@1.0.0"
@@ -127,6 +130,9 @@ System.config({
     },
     "github:jspm/nodelibs-util@0.1.0": {
       "util": "npm:util@0.10.3"
+    },
+    "github:jspm/nodelibs-vm@0.1.0": {
+      "vm-browserify": "npm:vm-browserify@0.0.4"
     },
     "github:mgonto/restangular@1.5.2": {
       "angular": "github:angular/bower-angular@1.5.5",
@@ -138,18 +144,14 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:assert@1.4.0": {
+    "npm:assert@1.4.1": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
-      "buffer-shims": "npm:buffer-shims@1.0.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "util": "npm:util@0.10.3"
     },
     "npm:babel-runtime@5.8.38": {
       "process": "github:jspm/nodelibs-process@0.1.2"
-    },
-    "npm:buffer-shims@1.0.0": {
-      "buffer": "github:jspm/nodelibs-buffer@0.1.0"
     },
     "npm:buffer@3.6.0": {
       "base64-js": "npm:base64-js@0.0.8",
@@ -204,8 +206,10 @@ System.config({
     "npm:path-browserify@0.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:process@0.11.3": {
-      "assert": "github:jspm/nodelibs-assert@0.1.0"
+    "npm:process@0.11.5": {
+      "assert": "github:jspm/nodelibs-assert@0.1.0",
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "vm": "github:jspm/nodelibs-vm@0.1.0"
     },
     "npm:punycode@1.3.2": {
       "process": "github:jspm/nodelibs-process@0.1.2"
@@ -244,6 +248,9 @@ System.config({
     "npm:util@0.10.3": {
       "inherits": "npm:inherits@2.0.1",
       "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:vm-browserify@0.0.4": {
+      "indexof": "npm:indexof@0.0.1"
     }
   }
 });

@@ -1,11 +1,11 @@
 import angular from 'angular';
 import { Injectable } from 'ng-transition/core';
 
-@Injectable()
+@Injectable({ id: 'messageService' })
 export class MessageService {
 
     /* @ngInject */
-    constructor(){
+    constructor() {
     }
 
     get message() {

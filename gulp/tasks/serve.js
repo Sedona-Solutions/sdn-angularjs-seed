@@ -18,7 +18,7 @@ gulp.task('serve:prod', ['release'], function (done) {
         open: false,
         port: 9001,
         server: {
-            baseDir: ['target/dist/']
+            baseDir: ['target/dist/app/']
         }
     }, done);
 });
