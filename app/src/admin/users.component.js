@@ -1,6 +1,4 @@
-import angular from 'angular';
 import { Component } from 'ng-transition/core';
-import { Module } from 'ng-transition/ng1';
 
 import template from 'app/admin/users.component.tpl';
 
@@ -11,7 +9,7 @@ import template from 'app/admin/users.component.tpl';
 export class UsersComponent {
 
     /* @ngInject */
-    constructor() {
-        console.log('users!');
+    constructor($log) {
+        $log.debug('users!');
     }
 }

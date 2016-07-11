@@ -1,6 +1,4 @@
-import angular from 'angular';
 
-import { Module } from 'ng-transition/ng1';
 import { Component } from 'ng-transition/core';
 
 import template from 'app/admin/builder.component.tpl';
@@ -11,9 +9,9 @@ import template from 'app/admin/builder.component.tpl';
 })
 export class BuilderComponent {
 
-    /*@ngInject*/
-    constructor($scope) {
-        console.log('builder!')
+    /* @ngInject */
+    constructor($log) {
+        $log.debug('builder!');
     }
 
 }

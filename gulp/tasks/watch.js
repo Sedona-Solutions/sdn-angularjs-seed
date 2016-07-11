@@ -7,7 +7,7 @@ function changed(event) {
 }
 
 gulp.task('watch', ['build'], function () {
-  gulp.watch([ paths.source ], [ 'es6', browserSync.reload ]).on('change', changed);
+  gulp.watch([ paths.source ], [ 'es6', 'lint', browserSync.reload ]).on('change', changed);
   gulp.watch([ paths.html ], [ 'html', browserSync.reload ]).on('change', changed);
   gulp.watch([ paths.less ], [ 'less' ]).on('change', changed);
 });
