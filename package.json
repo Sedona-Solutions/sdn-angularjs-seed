@@ -81,27 +81,30 @@
   "dependencies": {},
   "jspm": {
     "directories": {
+      "baseURL": "app",
       "packages": "app/libs"
     },
     "configFile": "app/system.config.js",
     "dependencies": {
-      "angular": "github:angular/bower-angular@^1.5.3",
-      "angular-material": "github:angular/bower-material@^1.0.8",
-      "angular-ui-router": "github:angular-ui/ui-router@^0.2.15",
-      "clean-css": "npm:clean-css@^3.4.12",
-      "css": "github:systemjs/plugin-css@^0.1.21",
-      "json": "github:systemjs/plugin-json@^0.1.2",
+      "angular": "github:angular/bower-angular@1.5.5",
+      "angular-animate": "github:angular/bower-angular-animate@1.5.5",
+      "angular-aria": "github:angular/bower-angular-aria@1.5.5",
+      "angular-material": "github:angular/bower-material@1.0.8",
+      "angular-ui-router": "github:angular-ui/ui-router@0.2.18",
+      "clean-css": "npm:clean-css@3.4.12",
+      "css": "github:systemjs/plugin-css@0.1.21",
+      "json": "github:systemjs/plugin-json@0.1.2",
       "lodash": "github:lodash/lodash@3.10.1",
-      "ng-transition": "github:Sedona-Solutions/angular-transition-sugar@^0.4.0",
-      "ocLazyLoad": "github:ocombe/oclazyload@^1.0.5",
-      "restangular": "github:mgonto/restangular@^1.5.2",
-      "ui-router-extras": "npm:ui-router-extras@^0.0.14"
+      "ng-transition": "github:Sedona-Solutions/angular-transition-sugar@0.4.1",
+      "ocLazyLoad": "github:ocombe/oclazyload@1.0.9",
+      "restangular": "github:mgonto/restangular@1.5.2",
+      "ui-router-extras": "npm:ui-router-extras@0.0.14"
     },
     "devDependencies": {
-      "angular-mocks": "github:angular/bower-angular-mocks@^1.5.3",
-      "babel": "npm:babel-core@^5.8.24",
-      "babel-runtime": "npm:babel-runtime@^5.8.24",
-      "core-js": "npm:core-js@^1.1.4"
+      "angular-mocks": "github:angular/bower-angular-mocks@1.5.5",
+      "babel": "npm:babel-core@5.8.38",
+      "babel-runtime": "npm:babel-runtime@5.8.38",
+      "core-js": "npm:core-js@1.2.6"
     },
     "overrides": {
       "github:mgonto/restangular@1.5.2": {
@@ -119,6 +122,7 @@
   "scripts": {
     "postinstall": "jspm install",
     "start": "gulp watch serve",
+    "start:release": "gulp serve:prod",
     "link:ng-transition": "jspm i --link github:Sedona-Solutions/angular-transition-sugar@dev -y",
     "version": "git add package.json",
     "test": "gulp test",
