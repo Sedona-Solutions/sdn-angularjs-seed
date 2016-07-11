@@ -8,8 +8,3 @@ gulp.task('lint', function () {
     .pipe(eslint.format());
 });
 
-gulp.task('lint-nonblocking', function () {
-  return gulp.src(paths.source)
-    .pipe(eslint())
-    .pipe(eslint.format());
-});

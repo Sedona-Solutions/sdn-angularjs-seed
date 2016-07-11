@@ -31,7 +31,7 @@
     "connect-history-api-fallback": "^1.2.0",
     "del": "^2.2.1",
     "es6-module-loader": "^0.17.11",
-    "eslint": "^2.13.1",
+    "eslint": "^3.0.1",
     "eslint-config-sedona": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
@@ -79,9 +79,7 @@
     "vinyl-fs": "^2.4.3",
     "vinyl-paths": "^2.1.0"
   },
-  "dependencies": {
-    "eslint": "^2.13.1"
-  },
+  "dependencies": {},
   "jspm": {
     "directories": {
       "baseURL": "app",
@@ -131,7 +129,7 @@
     "test": "gulp test",
     "wd": "gulp webdriver-standalone",
     "e2e": "gulp sauce-test",
-    "lint": "eslint \"app/**!(*libs)/*.js\" || true",
+    "lint": "gulp lint",
     "release": "gulp release",
     "remap-coverage": "remap-istanbul -i target/coverage/coverage-final.json -o target/coverage/remap/remap.json -b ./ && istanbul report --root target/coverage/remap --dir target/coverage/remap/rslt html",
     "changelog": "github_changelog_generator --no-unreleased --no-author"
