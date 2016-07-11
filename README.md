@@ -73,7 +73,7 @@ then, run `npm run e2e` to launch the e2e tests
 
 ### Lint
 
-run `npm run lint` to run jshint
+run `npm run lint` to run eslint
 
 ### Distribute
 
