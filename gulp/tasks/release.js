@@ -176,7 +176,7 @@ gulp.task('index-process', function () {
 
 gulp.task('prod:dependencies', function () {
     gulp.src(paths.jspm)
-        .pipe(gulp.dest('target/dist/app/libs'));
+        .pipe(gulp.dest('target/dist/libs'));
 
     gulp.src(paths.config)
         .pipe(gulp.dest('target/dist/app/config/'));
