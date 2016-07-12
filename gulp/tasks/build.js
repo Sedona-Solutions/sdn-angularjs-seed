@@ -4,8 +4,7 @@ var plumber = require('gulp-plumber');
 var babel = require('gulp-babel');
 var sourcemaps = require('gulp-sourcemaps');
 var ngAnnotate = require('gulp-ng-annotate');
-var less = require('gulp-less');
-var lessPluginCleanCSS = require("less-plugin-clean-css");
+var sass = require('gulp-sass');
 var htmlMin = require('gulp-minify-html');
 var ngHtml2Js = require("gulp-ng-html2js");
 var runSequence = require('run-sequence');
@@ -16,16 +15,10 @@ var paths = require('../paths');
 var fs = require('fs');
 var compilerOptions = JSON.parse(fs.readFileSync('.babelrc'));
 
-var cleancss = new lessPluginCleanCSS({
-    advanced: true,
-    keepSpecialComments: 0,
-    keepBreaks: false
-});
-
 gulp.task('build', function (callback) {
     return runSequence(
         'clean',
-        ['less', 'html', 'es6', 'move'],
+        ['sass', 'html', 'es6', 'move'],
         callback
     );
 });
@@ -64,14 +57,12 @@ gulp.task('html', function () {
         .pipe(gulp.dest(paths.output))
 });
 
-gulp.task('less', function () {
-    return gulp.src(paths.less)
+gulp.task('sass', function () {
+    return gulp.src(paths.sass)
         .pipe(plumber())
         .pipe(changed(paths.output, {extension: '.css'}))
         .pipe(sourcemaps.init())
-        .pipe(less({
-            plugins: [cleancss]
-        }))
+        .pipe(sass().on('error', sass.logError))
         .pipe(sourcemaps.write("."))
         .pipe(gulp.dest(paths.output))
         .pipe(browserSync.reload({stream: true}));
