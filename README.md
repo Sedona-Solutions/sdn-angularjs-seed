@@ -13,7 +13,6 @@ This is a work in progress.
 Remaining steps are :
 - drop systemjs-route-bundler and replace it by systemjs builder (nearly done - need some optimisations)
 - migration from Less to SCSS
-- add HTML validation
 - add client side commit hooks and init script
 - inline (source code) documentation
 
