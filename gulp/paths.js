@@ -5,7 +5,7 @@ module.exports = {
     index: 'app/index.html',
     json: ['app/src/{,*/,*/*/}/*.json', 'app/src/common/{,*/,*/*/}/*.json'],
     templates: 'app/**/*.tpl.html',
-    less: ['app/{,*/,*/*/,*/*/*/}*.less'],
+    sass: ['app/{,*/,*/*/,*/*/*/}*.scss'],
     output: 'target/tmp/',
     outputCss: 'target/tmp/**/*.css',
     tests: 'test/e2e/**/*.spec.js',
