@@ -13,7 +13,6 @@ This is a work in progress.
 Remaining steps are :
 - drop systemjs-route-bundler and replace it by systemjs builder (nearly done - need some optimisations)
 - migration from Less to SCSS
-- add HTML validation
 - add client side commit hooks and init script
 - inline (source code) documentation
 
@@ -81,7 +80,7 @@ run `npm run release` bundle, cache busting, and minify
 Engines
 -------------
 
-This project is strongly bind to :
+This project is strongly bound to :
 * gulp
 * system.js and jspm
 * angularjs 1.5
@@ -107,7 +106,7 @@ SDN-AngularJS-Seed is created and maintained by [Sedona](http://www.sedona.fr).
 
 It is available under the MIT Licence, more details in the LICENCE file.
 
-We would like to thanks the authors of the different libraries and bundle
+We would like to thank the authors of the different libraries and bundle
 used in this solution.
 
 * SDN-AngularJS-Seed was based on the angular1-systemjs-seed project, from Swimlane
