@@ -62,7 +62,7 @@ gulp.task('sass', function () {
         .pipe(plumber())
         .pipe(changed(paths.output, {extension: '.css'}))
         .pipe(sourcemaps.init())
-        .pipe(sass().on('error', sass.logError))
+        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(sourcemaps.write("."))
         .pipe(gulp.dest(paths.output))
         .pipe(browserSync.reload({stream: true}));
