@@ -1,6 +1,3 @@
-import { Injectable } from 'ng-transition/core';
-
-@Injectable({ id: 'messageService' })
 export class MessageService {
 
     /* @ngInject */
@@ -11,3 +8,6 @@ export class MessageService {
         return 'You got it !';
     }
 }
+
+MessageService.$$id = 'messageService';
+

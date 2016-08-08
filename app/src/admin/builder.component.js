@@ -1,12 +1,5 @@
-
-import { Component } from 'ng-transition/core';
-
 import template from 'app/admin/builder.component.tpl';
 
-@Component({
-    selector: 'builder',
-    templateUrl: template.name
-})
 export class BuilderComponent {
 
     /* @ngInject */
@@ -15,3 +8,11 @@ export class BuilderComponent {
     }
 
 }
+
+BuilderComponent.$$name = 'builder';
+
+BuilderComponent.$$config = {
+    selector: 'builder',
+    templateUrl: template.name,
+    controller: BuilderComponent
+};

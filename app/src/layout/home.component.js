@@ -1,11 +1,5 @@
-import { Component } from 'ng-transition/core';
-
 import template from 'app/layout/home.component.tpl';
 
-@Component({
-    selector: 'home',
-    templateUrl: template.name
-})
 export class HomeComponent {
 
     /* @ngInject */
@@ -13,5 +7,12 @@ export class HomeComponent {
         $log.debug('home component');
         this.name = 'home';
     }
-
 }
+
+HomeComponent.$$name = 'home';
+
+HomeComponent.$$config = {
+    selector: 'home',
+    templateUrl: template.name,
+    controller: HomeComponent
+};

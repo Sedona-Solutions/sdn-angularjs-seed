@@ -1,11 +1,5 @@
-import { Component } from 'ng-transition/core';
-
 import template from 'app/admin/users.component.tpl';
 
-@Component({
-    selector: 'users',
-    templateUrl: template.name
-})
 export class UsersComponent {
 
     /* @ngInject */
@@ -13,3 +7,9 @@ export class UsersComponent {
         $log.debug('users!');
     }
 }
+
+UsersComponent.$$config = {
+    selector: 'users',
+    templateUrl: template.name,
+    controller: UsersComponent
+};
