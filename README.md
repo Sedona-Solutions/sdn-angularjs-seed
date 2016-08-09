@@ -76,6 +76,44 @@ run `npm run lint` to run eslint
 
 run `npm run release` bundle, cache busting, and minify
 
+Conventions and requirements
+----------------
+
+Due to the absence of the [angular-transition-sugar](https://github.com/Sedona-solutions/angular-transition-sugar)
+library in this projet, and the use of system.js, some coding conventions are **very importants** to follow and understand !
+
+Simply follow the existing files in this projet to do so.
+
+### Modules
+
+When a module can be lazy loaded, you need :
+ * to export the module definition object (ex: AdminModule) at first
+ * to export the "angular.module" return has the "module"
+variable
+ * to define a "main component" for this module thanks to the "component" property of the definition object (ex: AdminModule.component)
+
+We recommend to always follow this rules, even if your module doesn't need to be lazy loaded.
+
+### Components
+
+When defining a new component, you should :
+1. define and export the component's controller has an ES6 class
+2. add a `$$name` string property to this class, which you later use as the first parameter for the `angularModule.component` function,
+   when registering the component in the module file
+3. also add a `$$config` object property to this class, which will represent the component definition object (ie. the
+second argument for the previously mentioned angular function)
+
+### Routes
+
+Some methods from [angular-transition-sugar](https://github.com/Sedona-solutions/angular-transition-sugar) have been hadded
+to the `common/utils` folder of this project in order to simply the definitions of new routes using angular ui-router.
+
+Accordingly, in order to define new routes, you'll need to :
+0. import { generateRoutesConfigurations } from 'common/utils/routes';
+1. define (and export) a `ROUTES` array in the module definition file, which will be an array of "route definition objects"
+2. call the `generateRoutesConfiguration` with the previously definied array
+3. use each methods into the returned object has argument to a `angularModule.config` function call
+
 Engines
 -------------
 
