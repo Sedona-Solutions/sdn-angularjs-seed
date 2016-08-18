@@ -6,15 +6,6 @@ var config = require('../config');
 var http = require('http');
 var proxy = require('http-proxy-middleware');
 
-var minimist = require('minimist');
-
-var knownOptions = {
-    string: 'prism',
-    default: { prism: 'proxy' }
-};
-
-var options = minimist(process.argv.slice(2));
-
 function prismInit(prismMode) {
     prismMode = prismMode || 'proxy';
 
@@ -22,9 +13,9 @@ function prismInit(prismMode) {
     var prismConfig = {
         name: 'api',
         mode: prismMode,
-        context: config.api.basepath,
-        host: 'localhost',
-        port: 8080,
+        context: config.getConfig('api').basepath,
+        host: config.getConfig('api').host,
+        port: config.getConfig('api').port,
         delay: 'auto',
         rewrite: {
         }
@@ -35,16 +26,16 @@ function prismInit(prismMode) {
     var app = connect()
         .use(prism.middleware);
 
-    http.createServer(app).listen(3000);
+    http.createServer(app).listen(config.getConfig('prism').port);
 }
 
 function browserSyncInit(done) {
 
     var pathRewrite = {};
-    pathRewrite[`^${config.api.route}`] = config.api.basepath;
+    pathRewrite[`^${config.getConfig('api').route}`] = config.getConfig('api').basepath;
 
-    var apiProxy = proxy(config.api.route, {
-        target: 'http://localhost:3000',
+    var apiProxy = proxy(config.getConfig('api').route, {
+        target: 'http://localhost:' + config.getConfig('prism').port,
         changeOrigin: true, // for vhosted sites, changes host header to match to target's host
         pathRewrite: pathRewrite,
         logLevel: 'debug'
@@ -61,7 +52,7 @@ function browserSyncInit(done) {
 }
 
 gulp.task('serve', ['watch'], function (done) {
-    prismInit(options.prism);
+    prismInit(config.getConfig('prism').mode);
     browserSyncInit(done);
 });
 
