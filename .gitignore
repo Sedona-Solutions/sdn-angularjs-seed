@@ -6,4 +6,4 @@ app/libs
 *.back.*
 /target
 /app/**/*.tpl.js
-
+/gulp/local-config.js
