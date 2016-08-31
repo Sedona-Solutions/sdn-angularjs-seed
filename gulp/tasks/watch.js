@@ -2,10 +2,13 @@ var gulp = require('gulp');
 var paths = require('../paths');
 var browserSync = require('browser-sync');
 
+// log informations about a changed file before running the related tasks
 function changed(event) {
   console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 }
 
+// build the project a first time, for development purpouse, and keep watching on changes on the source files
+// all change on a source file will re-run the related build task, and, if needed, reload the http server
 gulp.task('watch', ['build'], function () {
   gulp.watch([ paths.source ], [ 'es6', 'lint:js', browserSync.reload ]).on('change', changed);
   gulp.watch([ paths.systemConfig, paths.config, paths.jspm ], [ 'move', browserSync.reload ]).on('change', changed);

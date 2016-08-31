@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var paths = require('../paths');
 
+// copy assets, configuration files and libraries to a temprary location for the HTTP server 
 gulp.task('move', function () {
   var srcPaths = [
     './src/**/*.json',

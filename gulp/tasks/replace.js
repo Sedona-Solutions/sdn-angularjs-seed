@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var replace = require('gulp-replace-task');
 
+// replace strings in index.html for production
 gulp.task('replace', function(){
   return gulp.src('./index.html')
     .pipe(replace({
