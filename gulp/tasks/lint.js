@@ -10,7 +10,14 @@ gulp.task('lint', ['lint:js','lint:html']);
 gulp.task('lint:js', function () {
   return gulp.src(paths.source)
     .pipe(eslint())
-    .pipe(eslint.format());
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+});
+
+gulp.task('lint:js:dontfail', function () {
+  return gulp.src(paths.source)
+      .pipe(eslint())
+      .pipe(eslint.format());
 });
 
 // html validation thanks to htmlhint

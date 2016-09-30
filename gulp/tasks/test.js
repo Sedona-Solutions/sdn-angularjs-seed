@@ -10,9 +10,8 @@ gulp.task('test', ['build'], function (done) {
     new karma.Server({
         configFile: __dirname + '/../../test/karma.conf.js',
         singleRun: true
-    }, (exitCode) => {
-        console.log(exitCode);
-        done();
+    }, (err) => {
+        throw err;
     }).start();
 });
 
