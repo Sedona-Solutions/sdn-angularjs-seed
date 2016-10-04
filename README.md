@@ -1,20 +1,6 @@
 Sedona angularjs seed
 ================================
 
-Current state
--------------------
-
-This seed currently match the step 2 (Module Loading and home made decorators) of our internal transition path from AngularJS to Angular2.
-
-### Work In Progress
-
-This is a work in progress.
-
-Remaining steps are :
-- drop systemjs-route-bundler and replace it by systemjs builder (nearly done - need some optimisations)
-- add client side commit hooks and init script
-- inline (source code) documentation
-
 How To
 -------------
 
@@ -92,11 +78,12 @@ The following engines may be required in the OS for some uses :
 * git
 
 ### Versions
+
 The project has been tested with the following environment:
 
-- node v5.4.0
-- npm v3.5.3
-- jspm v0.16.33
+- node v4.4.7
+- npm v2.15.18
+- jspm v0.16.42
 
 Credits
 -----------
