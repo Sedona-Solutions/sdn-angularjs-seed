@@ -78,6 +78,7 @@
     "require-dir": "^0.3.0",
     "rsvp": "^3.2.1",
     "run-sequence": "^1.1.5",
+    "sonar-web-frontend-reporters": "^2.1.0",
     "systemjs": "^0.19.31",
     "systemjs-builder": "^0.15.19",
     "systemjs-route-bundler": "^1.6.0",

@@ -32,7 +32,8 @@ function getDirectories(srcpath) {
 gulp.task('release', function (callback) {
     return runSequence(
         'clean',
-        'build',
+        'lint',
+        'test', // the 'build' task runs before 'test'
         'prod:dependencies',
         'replace:system',
         'bundle',

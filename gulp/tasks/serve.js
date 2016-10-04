@@ -7,7 +7,7 @@ var proxy = require('http-proxy-middleware');
 
 // build and run the project for development purpose thanks to browsersync
 // the 'watch' task permit to auto-rebuild and reload all modified code in real time
-gulp.task('serve', ['watch'], function (done) {
+gulp.task('serve', ['lint', 'watch'], function (done) {
 
     var prism = require('connect-prism');
 
