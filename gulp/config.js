@@ -19,6 +19,8 @@ var possibleEnvs = [
 ];
 
 // global configuration for every environment
+// the values in the 'default' object are used if no corresponding value is found
+// in the object related to the current environment 
 var config = {
     api: {
         default: {
@@ -97,14 +99,15 @@ if (options.env) {
 console.info('environment : ' + env);
 
 module.exports = {
+    // get a configuration element from it's string key
     getConfig: function (key) {
         if (typeof config[key] !== 'undefined' && !_.isEmpty(config[key])) {
             var rslt = _.merge(config[key].default, config[key][env]);
-            // console.info('info : config.' + key + '.' + env + ' returned ' + util.inspect(rslt, false, null));
             return rslt;
         }
         throw key + ' is not a valid configuration key';
     },
+    // get the current environment string
     getEnv: function () {
         return env;
     },

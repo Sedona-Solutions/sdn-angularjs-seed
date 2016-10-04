@@ -15,6 +15,7 @@ var paths = require('../paths');
 var fs = require('fs');
 var compilerOptions = JSON.parse(fs.readFileSync('.babelrc'));
 
+// sequence of other tasks needed for serving the project
 gulp.task('build', function (callback) {
     return runSequence(
         'clean',
@@ -23,13 +24,14 @@ gulp.task('build', function (callback) {
     );
 });
 
-
+// compile the ES6 code to ES6 thanks to babeljs
 gulp.task('es6', function () {
     return gulp.src(paths.source, {base: 'app'})
         .pipe(plumber())
         .pipe(changed(paths.output, {extension: '.js'}))
         .pipe(sourcemaps.init())
         .pipe(babel(compilerOptions))
+        // add the angularjs annotations for dependency injection with uglification
         .pipe(ngAnnotate({
             sourceMap: true,
             gulpWarnings: false
@@ -38,6 +40,7 @@ gulp.task('es6', function () {
         .pipe(gulp.dest(paths.output))
 });
 
+// wrap html templates in js code for angularjs
 gulp.task('html', function () {
     return gulp.src(paths.templates)
         .pipe(plumber())
@@ -57,6 +60,7 @@ gulp.task('html', function () {
         .pipe(gulp.dest(paths.output))
 });
 
+// compile sass to css
 gulp.task('sass', function () {
     return gulp.src(paths.sass)
         .pipe(plumber())

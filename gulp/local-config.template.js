@@ -3,6 +3,7 @@ module.exports = {
     // default environment ( 'development', 'production', 'local' or 'implementation')
     env: 'development',
     config: {
+        // backend api configuration
         api: {
             protocol: 'http',
             host: 'localhost',
@@ -10,7 +11,10 @@ module.exports = {
             basepath: '/backend-web/rest',
             route: '/rest'
         },
+        // backend connect-prism proxy configuration
         prism: {
+            // connect-prism mode : 'record' | 'mock' | 'proxy' | 'mockrecord'
+            // cf. https://github.com/seglo/connect-prism#mode
             mode: 'proxy',
             port: '3000'
         }
