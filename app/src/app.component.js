@@ -1,5 +1,7 @@
 import 'babel/external-helpers';
 
+import 'json';
+
 import 'angular-ui-router';
 import 'ui-router-extras';
 import 'ocLazyLoad';

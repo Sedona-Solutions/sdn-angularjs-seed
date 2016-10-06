@@ -52,6 +52,11 @@ gulp.task('bundle', function (callback) {
 
     var directories = getDirectories('target/tmp/src');
 
+    var i = directories.indexOf('common');
+    if(i !== -1) {
+        directories.splice(i, 1);
+    }
+
     // systemjs-builder object, permitting to create the sub-modules bundles
     var modulesBuilder = new Builder('./', paths.systemConfig);
 
@@ -69,14 +74,15 @@ gulp.task('bundle', function (callback) {
     directories.forEach((moduleName) => {
         bundles[`app/${moduleName}.js`] = [`app/${moduleName}/*`];
     });
-    bundles['app/main.js'] = ['app/layout/*', 'common/*', 'app/main', 'app/app.*'];
+    bundles['app/main.js'] = ['app/layout/*', 'common/*', 'app/main', 'app/app.*', 'angular*', 'github:*', 'json'];
 
     // configure systemjs-builder in order to create the project's sub-modules bundles
     modulesBuilder.config({
         // exclude libraries and common files of this bundles
         meta: {
             'libs/*': { build: false },
-            'common/*': { build: false }
+            'common/*': { build: false },
+            'angular': { build: false}
         },
         paths: pathObj
     });
@@ -160,6 +166,8 @@ gulp.task('bundle', function (callback) {
             paths: pathObj,
             bundles
         });
+
+        console.log(`${toExcludeFromMain} was excluded from main.js`);
 
         // create the 'main' bundle, excluding all the files previously defined in toExcludeFromMain
         mainBuilder.bundle(`app/main.js - ${toExcludeFromMain}`, 'target/dist/app/main.js', {
