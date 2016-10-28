@@ -59,6 +59,11 @@ gulp.task('bundle', function (callback) {
         directories.splice(i, 1);
     }
 
+    var i = directories.indexOf('assets');
+    if(i !== -1) {
+        directories.splice(i, 1);
+    }
+
     // systemjs-builder object, permitting to create the sub-modules bundles
     var modulesBuilder = new Builder('./', paths.systemConfig);
 
