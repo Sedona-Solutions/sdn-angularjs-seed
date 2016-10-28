@@ -130,6 +130,7 @@
     "lint": "gulp lint",
     "release": "gulp release",
     "remap-coverage": "remap-istanbul -i target/coverage/coverage-final.json -o target/coverage/remap/remap.json -b ./ && istanbul report --root target/coverage/remap --dir target/coverage/remap/rslt html",
-    "changelog": "github_changelog_generator --no-unreleased --no-author"
+    "changelog": "github_changelog_generator --no-unreleased --no-author",
+    "release:zip": "npm run release && cd ./target/dist/app && tar -cvzf seed-frontend.tar.gz ."
   }
 }
