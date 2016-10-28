@@ -16,15 +16,15 @@ gulp.task('move:config', function () {
 
 gulp.task('move:assets', function () {
     var srcPaths = [
-        './src/**/*.json',
-        './src/**/*.svg',
-        './src/**/*.woff',
-        './src/**/*.ttf',
-        './src/**/*.png',
-        './src/**/*.ico',
-        './src/**/*.jpg',
-        './src/**/*.gif',
-        './src/**/*.eot',
+        './app/**/*.json',
+        './app/**/*.svg',
+        './app/**/*.woff',
+        './app/**/*.ttf',
+        './app/**/*.png',
+        './app/**/*.ico',
+        './app/**/*.jpg',
+        './app/**/*.gif',
+        './app/**/*.eot',
         './app/system.config.js'
     ];
 

@@ -224,6 +224,14 @@ gulp.task('prod:dependencies', function () {
 
     gulp.src(paths.config)
         .pipe(gulp.dest('target/dist/app/config/'));
+
+    gulp.src(paths.assets)
+        .pipe(gulp.dest('target/dist/app/assets/'));
+
+    // TODO : this is a temporary solution
+    // the scss compilation does not handle well fonts and images paths
+    gulp.src('target/tmp/assets/**/*.*', {base: 'target/tmp'})
+        .pipe(gulp.dest('target/dist/app/target/tmp/src/'));
 });
 
 // rewrite the systemjs configuration for the bundle tasks

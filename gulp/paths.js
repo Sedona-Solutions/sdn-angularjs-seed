@@ -36,5 +36,7 @@ module.exports = {
     // generated css files
     genCss: 'app/src/**/*.css',
     // generated js templates
-    genTpl: 'app/src/**/*.tpl.js'
+    genTpl: 'app/src/**/*.tpl.js',
+    // assets
+    assets: 'app/assets/**/*'
 };
