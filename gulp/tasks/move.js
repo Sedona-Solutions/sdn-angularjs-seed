@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var paths = require('../paths');
 
 // copy assets, configuration files and libraries to a temprary location for the HTTP server 
-gulp.task('move', ['move:libs', 'move:config', 'move:assets']);
+gulp.task('move', ['move:libs', 'move:config', 'move:assets', 'move:assets:bug']);
 
 gulp.task('move:libs', function () {
     return  gulp.src('./app/libs/**/*')
@@ -30,4 +30,11 @@ gulp.task('move:assets', function () {
 
     return gulp.src(srcPaths)
         .pipe(gulp.dest(paths.output));
-})
+});
+
+gulp.task('move:assets:bug', function () {
+   // TODO : this is a temporary solution
+   // the scss compilation does not handle well fonts and images paths
+   return gulp.src('app/assets/**/*.*', {base: 'app/'})
+       .pipe(gulp.dest('target/tmp/src/'));
+});
