@@ -46,7 +46,8 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
-            'test/unit/{,**/}*.js'
+            'test/app/{,**/}*.js',
+            'app/libs/github/systemjs/plugin-json@0.1.2/json.js'
         ],
 
         // list of files to exclude
