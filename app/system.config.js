@@ -12,9 +12,9 @@ System.config({
     "npm:*": "libs/npm/*",
     "jspm_packages/*": "libs/*"
   },
+  bundles: "",
   buildCSS: true,
   separateCSS: false,
-  // replace:bundles
 
   meta: {
     "github:angular/bower-angular@1.5.5/angular": {

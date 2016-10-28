@@ -8,6 +8,8 @@ var path = require('path');
 var processhtml = require('gulp-processhtml');
 var replace = require('gulp-replace');
 var config = require('../config');
+var uglify = require('gulp-uglify');
+
 
 var bundles = {};
 
@@ -99,7 +101,7 @@ gulp.task('bundle', function (callback) {
         // path to the module's directory
         var pathToDir = 'app/' + moduleName + '/';
         // main entry for the current module
-        var moduleFile = pathToDir + moduleName + '.component.js';
+        var moduleFile = pathToDir + moduleName + '.module.js';
 
         // create the bundle, with sourcemap, and minify it
         return modulesBuilder.bundle(moduleFile, 'target/dist/app/' + moduleName + '.js', { minify: true, sourcemap: true })
@@ -190,11 +192,14 @@ gulp.task('bundle', function (callback) {
                     .pipe(replace('"app/*": "src/*",', '"app/*": "./*",'))
                     // add the 'bundles' object to the configuration file
                     // cf. https://github.com/systemjs/systemjs/blob/master/docs/config-api.md#bundle
-                    .pipe(replace('// replace:bundles', 'bundles: ' + JSON.stringify(bundles) + ','))
+                    .pipe(replace('bundles: "",', 'bundles: ' + JSON.stringify(bundles) + ','))
                     // TODO : this is a temporary solution - see next commented pipe for the idea
                     .pipe(replace(/(\/\/ replace:next:)(.*)([\n\r])(.*)/g, '$2'))
                     // this replace need to be repeated until there is no match anymore
                     //.pipe(replace(/(\/\/ replace:dist[\s\S]*)(dist\/)([\s\S]*\/\/ endreplace:dist)/g, '$1$3'))
+                    .pipe(uglify({
+                        mangle: false
+                    }))
                     .pipe(gulp.dest('target/dist/app/'));
 
                 callback();

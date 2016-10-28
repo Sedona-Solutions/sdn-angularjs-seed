@@ -1,7 +1,15 @@
 import 'babel/external-helpers';
 
+// don't remove this, or you won't be hable to import json files
 import 'json';
 
+// each common/* file that is used by this project needs to be imported here
+// even the ones that are used only in lazy loaded modules
+import 'common/REST_PATHS.js';
+import 'common/WORDING.js';
+
+// each library needs to be imported here
+// even the ones that are used only in lazy loaded modules
 import 'angular-ui-router';
 import 'ui-router-extras';
 import 'ocLazyLoad';
