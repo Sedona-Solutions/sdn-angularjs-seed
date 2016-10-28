@@ -35,7 +35,7 @@ gulp.task('release', function (callback) {
         'clean',
         'lint',
         'build',
-        //'test', // the 'build' task runs before 'test'
+        'test', // the 'build' task runs before 'test'
         'prod:dependencies',
         'replace:system',
         'bundle',

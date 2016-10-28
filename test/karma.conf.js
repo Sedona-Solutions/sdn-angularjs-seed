@@ -13,7 +13,6 @@ module.exports = function (config) {
         plugins: [
             'karma-systemjs',
             'karma-phantomjs-launcher',
-            'karma-chrome-launcher',
             'karma-jasmine',
             'karma-junit-reporter',
             'karma-coverage',
