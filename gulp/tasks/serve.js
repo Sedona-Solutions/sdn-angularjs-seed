@@ -4,6 +4,31 @@ var connect = require('connect');
 var config = require('../config');
 var http = require('http');
 var proxy = require('http-proxy-middleware');
+var paths = require('../paths');
+var processhtml = require('gulp-processhtml');
+
+var bsConfig = function (baseDir, port, middlewares, open) {
+    var bsConf = {
+        open: open,
+        port: port,
+        server: {
+            baseDir: [baseDir]
+        }
+    };
+
+    if (config.getConfig('serve').base !== '/') {
+        bsConf.server.routes = {};
+        bsConf.server.routes[config.getConfig('serve').base] = baseDir;
+    }
+
+    if (middlewares && middlewares.length) {
+        bsConf.server.middleware = middlewares;
+    }
+
+    return bsConf;
+}
+
+
 
 // build and run the project for development purpose thanks to browsersync
 // the 'watch' task permit to auto-rebuild and reload all modified code in real time
@@ -63,14 +88,7 @@ gulp.task('serve', ['lint', 'watch'], function (done) {
         });
         
         // create and run the http server
-        browserSync({
-            open: false,
-            port: 9000,
-            server: {
-                baseDir: ['target/tmp/'],
-                middleware: [ apiProxy ]
-            }
-        }, done);
+        browserSync(bsConfig('target/tmp/', 9000, [apiProxy]), done);
     }
 
     prismInit(config.getConfig('prism').mode);
@@ -79,11 +97,18 @@ gulp.task('serve', ['lint', 'watch'], function (done) {
 
 // build a release for production and run it for test purpose thanks to browsersync
 gulp.task('serve:prod', ['release'], function (done) {
-    browserSync({
-        open: false,
-        port: 9001,
-        server: {
-            baseDir: ['target/dist/app/']
-        }
-    }, done);
+    browserSync(bsConfig('target/dist/app/', 9001), done);
+});
+
+// process (ie. transform) the index (html) file for tests
+// cf. https://github.com/Wildhoney/gulp-processhtml
+gulp.task('index-process:serve', function () {
+    gulp.src(paths.index)
+        .pipe(processhtml({
+            environment: 'serve',
+            data: {
+                base: config.getConfig('serve').base
+            }
+        }))
+        .pipe(gulp.dest('target/tmp/'));
 });

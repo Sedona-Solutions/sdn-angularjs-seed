@@ -7,6 +7,7 @@ var fs = require('fs');
 var path = require('path');
 var processhtml = require('gulp-processhtml');
 var replace = require('gulp-replace');
+var config = require('../config');
 
 var bundles = {};
 
@@ -33,11 +34,12 @@ gulp.task('release', function (callback) {
     return runSequence(
         'clean',
         'lint',
-        'test', // the 'build' task runs before 'test'
+        'build',
+        //'test', // the 'build' task runs before 'test'
         'prod:dependencies',
         'replace:system',
         'bundle',
-        'index-process',
+        'index-process:release',
         callback
     );
 });
@@ -204,9 +206,14 @@ gulp.task('bundle', function (callback) {
 
 // process (ie. transform) the index (html) file for production
 // cf. https://github.com/Wildhoney/gulp-processhtml
-gulp.task('index-process', function () {
+gulp.task('index-process:release', function () {
     gulp.src(paths.index)
-        .pipe(processhtml())
+        .pipe(processhtml({
+            environment: 'release',
+            data: {
+                base: config.getConfig('serve').base
+            }
+        }))
         .pipe(gulp.dest('target/dist/app/'));
 });
 

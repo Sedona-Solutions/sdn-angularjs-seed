@@ -4,7 +4,7 @@ var _ = require('lodash');
 
 
 // the only available configuration keys
-var configKeys = ['api', 'prism'];
+var configKeys = ['api', 'prism', 'serve'];
 
 // the only available environments
 var possibleEnvs = [
@@ -50,6 +50,11 @@ var config = {
         },
         implementation: {
             mode: 'record'
+        }
+    },
+    serve: {
+        default: {
+            base: '/'
         }
     }
 };

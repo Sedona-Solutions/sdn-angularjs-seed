@@ -25,7 +25,6 @@ gulp.task('move:assets', function () {
         './src/**/*.jpg',
         './src/**/*.gif',
         './src/**/*.eot',
-        './app/index.html',
         './app/system.config.js'
     ];
 

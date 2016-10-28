@@ -17,6 +17,10 @@ module.exports = {
             // cf. https://github.com/seglo/connect-prism#mode
             mode: 'proxy',
             port: '3000'
+        },
+        serve: {
+            // base url for the project
+            base: '/seed'
         }
     }
 };
