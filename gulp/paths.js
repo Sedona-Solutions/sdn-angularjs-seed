@@ -38,5 +38,7 @@ module.exports = {
     // generated js templates
     genTpl: 'app/src/**/*.tpl.js',
     // assets
-    assets: 'app/assets/**/*'
+    assets: 'app/assets/**/*',
+    // system.js lib file
+    systemjs: 'app/libs/system.js'
 };

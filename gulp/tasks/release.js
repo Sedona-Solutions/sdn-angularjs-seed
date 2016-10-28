@@ -224,7 +224,7 @@ gulp.task('index-process:release', function () {
 
 // copy the remaining files in order to complete production realease
 gulp.task('prod:dependencies', function () {
-    gulp.src(paths.jspm)
+    gulp.src(paths.systemjs)
         .pipe(gulp.dest('target/dist/app/libs'));
 
     gulp.src(paths.config)
